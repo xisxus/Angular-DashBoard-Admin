@@ -1,0 +1,30 @@
+<p>get-package-details works!</p>
+<div *ngIf="package">
+    <h2>Package Details</h2>
+    <p><strong>Package ID:</strong> {{ package.packageID }}</p>
+    <p><strong>Estimated Food Cost:</strong> {{ package.estimatedFoodCost | currency }}</p>
+    <p><strong>Estimated Transport Cost:</strong> {{ package.estimatedTransportCost | currency }}</p>
+    <p><strong>Estimated Accommodation Cost:</strong> {{ package.estimatedAccommodationCost | currency }}</p>
+    
+    <!-- Display the current Other Cost -->
+    <p><strong>Other Cost:</strong> {{ package.otherCost | currency }}</p>
+    
+    <!-- Button to toggle the input field -->
+    <button (click)="toggleOtherCostInput()">
+      {{ showOtherCostInput ? 'Cancel' : 'Update Other Cost' }}
+    </button>
+  
+    <!-- Show the input field when the button is clicked -->
+    <div *ngIf="showOtherCostInput">
+      <input type="number" [(ngModel)]="updatedOtherCost" placeholder="Enter new other cost" />
+      <button (click)="updateOtherCost()">Submit</button>
+    </div>
+  
+    <p><strong>Profit Percent:</strong> {{ package.profitPercent }}%</p>
+    <p><strong>Subtotal:</strong> {{ package.subtotal | currency }}</p>
+    <p><strong>Profit:</strong> {{ package.profit | currency }}</p>
+    <p><strong>Total Package Cost:</strong> {{ package.totalPackageCost | currency }}</p>
+    <p><strong>Individual Package Cost:</strong> {{ package.individualPackageCost | currency }}</p>
+  </div>
+  
+  
