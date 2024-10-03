@@ -15,10 +15,18 @@ export class PackageBudgetService {
     return this.http.get<GetPackageBudget>(`${this.baseUrl}/${packageID}`);
   }
 
-  updateOtherCost(packageID: number, otherCost: number): Observable<any> {
-    const url = `http://localhost:5141/api/Package/update-package-budget-othercost/${packageID}`;
-    return this.http.put(url, { otherCost });
-  }
+  // updateOtherCost(packageID: number, otherCost: number): Observable<any> {
+  //   const url = `http://localhost:5141/api/Package/update-package-budget-othercost/${packageID}?otherCost=${otherCost}`;
+  //   console.log(otherCost);
+    
+  //   return this.http.put(url,  { packageID, otherCost });
+  // }
+
+  // Update this method in PackageBudgetService
+updateOtherCost(packageID: number, data: { otherCost: number, profitPercent: number }): Observable<any> {
+  return this.http.put(`http://localhost:5141/api/Package/update-package-budget-othercost/${packageID}`, data);
+}
+
   
  
 }

@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { GetPackageBudget } from '../../../../models/PackageBudget/get-package-budget';
 import { ActivatedRoute } from '@angular/router';
 import { PackageBudgetService } from '../../../../services/PackageBudget/package-budget.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-get-package-details',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, JsonPipe],
   templateUrl: './get-package-details.component.html',
   styleUrl: './get-package-details.component.css'
 })
@@ -17,7 +17,10 @@ export class GetPackageDetailsComponent implements OnInit {
 
   package: GetPackageBudget | undefined;
   showOtherCostInput: boolean = false;
-  updatedOtherCost: number = 0;  // Default value set to 0
+  otherCost: number = 0;  // Default value set to 0
+
+
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +34,7 @@ export class GetPackageDetailsComponent implements OnInit {
         this.packageBudgetService.getPackageById(packageID).subscribe(
            (data: GetPackageBudget) => {
             this.package = data;
-            this.updatedOtherCost = data.otherCost || 0;  // Default to 0 if otherCost is undefined
+            this.otherCost = data.otherCost || 0;  // Default to 0 if otherCost is undefined
           },
           error => console.error(error)
         );
@@ -44,20 +47,33 @@ export class GetPackageDetailsComponent implements OnInit {
   }
 
   updateOtherCost(): void {
-    if (this.package && this.updatedOtherCost !== undefined) {
-      this.packageBudgetService.updateOtherCost(this.package.packageID, this.updatedOtherCost)
+    if (this.package) {
+      // Prepare the body with both values
+      const updateData = {
+        otherCost: this.otherCost,
+        profitPercent: this.package.profitPercent  // Make sure you have the correct value here
+      };
+      
+      console.log('Sending update data:', updateData);
+  
+      this.packageBudgetService.updateOtherCost(this.package.packageID, updateData)
         .subscribe(
           () => {
-            // Update the local package object with the new other cost
             if (this.package) {
-              this.package.otherCost = this.updatedOtherCost;
+              this.package.otherCost = this.otherCost;
+              this.package.profitPercent = updateData.profitPercent;
             }
             this.showOtherCostInput = false;  
           },
-          error => console.error(error)
+          error => {
+            console.error('Error updating package details:', error);
+          }
         );
     }
   }
+  
+  
+  
 }
 
 

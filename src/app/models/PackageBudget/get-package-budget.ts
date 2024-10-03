@@ -1,8 +1,8 @@
 export interface GetPackageBudget {
   packageID: number;
-  estimatedFoodCost: number;
+  estimateedFoodCost: number;
   estimatedTransportCost: number;
-  estimatedAccommodationCost: number;
+  estimatedAccomodationCost: number;
   otherCost: number;
   profitPercent: number;
   subtotal: number;

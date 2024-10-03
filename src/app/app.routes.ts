@@ -11,6 +11,7 @@ import { AddSubCategoryComponent } from './components/data/tour-package/package-
 import { UpdateSubCategoryComponent } from './components/data/tour-package/package-sub-category/update-sub-category/update-sub-category.component';
 import { CostEstimateFormComponentComponent } from './components/data/PackageBudget/cost-estimate-form-component/cost-estimate-form-component.component';
 import { GetPackageDetailsComponent } from './components/data/PackageBudget/get-package-details/get-package-details.component';
+import { TourVoucherComponent } from './components/data/TourVoucher/tour-voucher/tour-voucher.component';
 
 
 export const routes: Routes = [  
@@ -25,6 +26,7 @@ export const routes: Routes = [
   { path: 'update-sub-category/:id', component: UpdateSubCategoryComponent},
   { path: 'package/addBudget', component: CostEstimateFormComponentComponent},
   { path: 'package/addBudget/:id', component: GetPackageDetailsComponent},
+  { path: 'package/voucher', component: TourVoucherComponent},
  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
