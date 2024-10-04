@@ -9,6 +9,7 @@ import { UpdateCategoryComponent } from './components/data/tour-package/package-
 import { ShowSubCategoryComponent } from './components/data/tour-package/package-sub-category/show-sub-category/show-sub-category.component';
 import { AddSubCategoryComponent } from './components/data/tour-package/package-sub-category/add-sub-category/add-sub-category.component';
 import { UpdateSubCategoryComponent } from './components/data/tour-package/package-sub-category/update-sub-category/update-sub-category.component';
+
 import { CountryListComponent } from './components/data/Country/country-list/country-list.component';
 import { CountryAddComponent } from './components/data/Country/country-add/country-add.component';
 import { CountryEditComponent } from './components/data/Country/country-edit/country-edit.component';
@@ -16,6 +17,14 @@ import { CountryDeleteComponent } from './components/data/Country/country-delete
 import { StateListComponent } from './components/data/State/state-list/state-list.component';
 import { StateCreateComponent } from './components/data/State/state-create/state-create.component';
 import { StateEditComponent } from './components/data/State/state-edit/state-edit.component';
+
+
+import { CostEstimateFormComponentComponent } from './components/data/PackageBudget/cost-estimate-form-component/cost-estimate-form-component.component';
+import { GetPackageDetailsComponent } from './components/data/PackageBudget/get-package-details/get-package-details.component';
+import { TourVoucherComponent } from './components/data/TourVoucher/tour-voucher/tour-voucher.component';
+import { ScheduleListComponent } from './components/data/Schedule/schedule-list/schedule-list.component';
+import { AddScheduleComponent } from './components/data/Schedule/add-schedule/add-schedule.component';
+import { UpdateScheduleComponent } from './components/data/Schedule/update-schedule/update-schedule.component';
 
 
 
@@ -29,6 +38,7 @@ export const routes: Routes = [
   { path: 'sub-categories', component: ShowSubCategoryComponent },
   { path: 'add-sub-category', component: AddSubCategoryComponent },
   { path: 'update-sub-category/:id', component: UpdateSubCategoryComponent},
+
   { path: 'countries', component: CountryListComponent },   // GET
   { path: 'countries/add', component: CountryAddComponent },   // POST
   { path: 'countries/edit/:id', component: CountryEditComponent },   // PUT
@@ -36,6 +46,16 @@ export const routes: Routes = [
   { path: 'states', component: StateListComponent },
   { path: 'states/create', component: StateCreateComponent },
   { path: 'states/edit/:id', component: StateEditComponent },
+
+
+  { path: 'package/addBudget', component: CostEstimateFormComponentComponent},
+  { path: 'package/addBudget/:id', component: GetPackageDetailsComponent},
+  { path: 'package/voucher', component: TourVoucherComponent},
+  { path: 'schedule', component: ScheduleListComponent},
+  { path: 'schedule/add', component: AddScheduleComponent},
+  { path: 'schedule/edit/:id', component: UpdateScheduleComponent},
+ 
+ 
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 

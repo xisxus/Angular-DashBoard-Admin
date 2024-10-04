@@ -1,0 +1,30 @@
+<p>cost-estimate-form-component works!</p>
+
+
+<form (ngSubmit)="submitCostEstimate()">
+    <label>
+        Package ID:
+        <input [(ngModel)]="costEstimate.packageID" name="packageID" required />
+    </label>
+    <label>
+        Estimated Food Cost:
+        <input [(ngModel)]="costEstimate.estimatedFoodCost" name="estimatedFoodCost" required />
+    </label>
+    <label>
+        Estimated Transport Cost:
+        <input [(ngModel)]="costEstimate.estimatedTransportCost" name="estimatedTransportCost" required />
+    </label>
+    <label>
+        Estimated Accommodation Cost:
+        <input [(ngModel)]="costEstimate.estimatedAccommodationCost" name="estimatedAccommodationCost" required />
+    </label>
+    <label>
+        Other Cost:
+        <input [(ngModel)]="costEstimate.otherCost" name="otherCost" required />
+    </label>
+    <label>
+        Profit Percent:
+        <input [(ngModel)]="costEstimate.profitPercent" name="profitPercent" required />
+    </label>
+    <button type="submit">Create Cost Estimate</button>
+</form>

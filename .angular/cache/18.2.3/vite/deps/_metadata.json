@@ -1,49 +1,49 @@
 {
-  "hash": "1812c1b0",
-  "configHash": "df3a9bc0",
-  "lockfileHash": "c3d36bda",
-  "browserHash": "ddd34083",
+  "hash": "2ef85d48", // Choose the hash you prefer
+  "configHash": "97b81fc2", // Choose the config hash you prefer
+  "lockfileHash": "c1765e5d", // Choose the lockfile hash you prefer
+  "browserHash": "6e8d5fa7", // Choose the browser hash you prefer
   "optimized": {
     "@angular/common": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "6293ca95",
+      "fileHash": "a8bff347", // Choose the file hash you prefer
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "bcd7f510",
+      "fileHash": "538bb285", // Choose the file hash you prefer
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "79d25a47",
+      "fileHash": "ae7cdfa3", // Choose the file hash you prefer
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "0528b071",
+      "fileHash": "85896ba7", // Choose the file hash you prefer
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "0aecd460",
+      "fileHash": "d812bb3d", // Choose the file hash you prefer
       "needsInterop": false
     },
     "@angular/platform-browser/animations": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/animations.mjs",
       "file": "@angular_platform-browser_animations.js",
-      "fileHash": "5a4c0d5e",
+      "fileHash": "8785c609", // Choose the file hash you prefer
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "d9a42d40",
+      "fileHash": "1ce527e0", // Choose the file hash you prefer
       "needsInterop": false
     }
   },
@@ -53,7 +53,10 @@
     },
     "chunk-GCEM6ZEC": {
       "file": "chunk-GCEM6ZEC.js"
-    },
+    }
+  }
+}
+
     "chunk-X7PCTTRX": {
       "file": "chunk-X7PCTTRX.js"
     },
