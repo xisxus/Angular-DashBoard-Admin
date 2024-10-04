@@ -13,7 +13,7 @@ import { UpdateSubCategoryComponent } from './components/data/tour-package/packa
 import { CountryListComponent } from './components/data/Country/country-list/country-list.component';
 import { CountryAddComponent } from './components/data/Country/country-add/country-add.component';
 import { CountryEditComponent } from './components/data/Country/country-edit/country-edit.component';
-import { CountryDeleteComponent } from './components/data/Country/country-delete/country-delete.component';
+
 import { StateListComponent } from './components/data/State/state-list/state-list.component';
 import { StateCreateComponent } from './components/data/State/state-create/state-create.component';
 import { StateEditComponent } from './components/data/State/state-edit/state-edit.component';
@@ -25,6 +25,10 @@ import { TourVoucherComponent } from './components/data/TourVoucher/tour-voucher
 import { ScheduleListComponent } from './components/data/Schedule/schedule-list/schedule-list.component';
 import { AddScheduleComponent } from './components/data/Schedule/add-schedule/add-schedule.component';
 import { UpdateScheduleComponent } from './components/data/Schedule/update-schedule/update-schedule.component';
+import { FacilityListComponent } from './components/data/Facilities/facility-list/facility-list.component';
+import { FacilityCreateComponent } from './components/data/Facilities/facility-create/facility-create.component';
+import { FacilityEditComponent } from './components/data/Facilities/facility-edit/facility-edit.component';
+import { FacilityDeleteComponent } from './components/data/Facilities/facility-delete/facility-delete.component';
 
 
 
@@ -54,6 +58,14 @@ export const routes: Routes = [
   { path: 'schedule', component: ScheduleListComponent},
   { path: 'schedule/add', component: AddScheduleComponent},
   { path: 'schedule/edit/:id', component: UpdateScheduleComponent},
+
+
+  { path: 'facility', component: FacilityListComponent },
+  { path: 'facility/create', component: FacilityCreateComponent },
+  { path: 'facility/edit/:id', component: FacilityEditComponent },
+
+
+
  
  
 
