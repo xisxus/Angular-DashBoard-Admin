@@ -12,6 +12,9 @@ import { UpdateSubCategoryComponent } from './components/data/tour-package/packa
 import { CostEstimateFormComponentComponent } from './components/data/PackageBudget/cost-estimate-form-component/cost-estimate-form-component.component';
 import { GetPackageDetailsComponent } from './components/data/PackageBudget/get-package-details/get-package-details.component';
 import { TourVoucherComponent } from './components/data/TourVoucher/tour-voucher/tour-voucher.component';
+import { ScheduleListComponent } from './components/data/Schedule/schedule-list/schedule-list.component';
+import { AddScheduleComponent } from './components/data/Schedule/add-schedule/add-schedule.component';
+import { UpdateScheduleComponent } from './components/data/Schedule/update-schedule/update-schedule.component';
 
 
 export const routes: Routes = [  
@@ -27,6 +30,10 @@ export const routes: Routes = [
   { path: 'package/addBudget', component: CostEstimateFormComponentComponent},
   { path: 'package/addBudget/:id', component: GetPackageDetailsComponent},
   { path: 'package/voucher', component: TourVoucherComponent},
+  { path: 'schedule', component: ScheduleListComponent},
+  { path: 'schedule/add', component: AddScheduleComponent},
+  { path: 'schedule/edit/:id', component: UpdateScheduleComponent},
+ 
  
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
