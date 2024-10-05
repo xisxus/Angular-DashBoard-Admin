@@ -29,6 +29,18 @@ import { FacilityListComponent } from './components/data/Facilities/facility-lis
 import { FacilityCreateComponent } from './components/data/Facilities/facility-create/facility-create.component';
 import { FacilityEditComponent } from './components/data/Facilities/facility-edit/facility-edit.component';
 import { FacilityDeleteComponent } from './components/data/Facilities/facility-delete/facility-delete.component';
+import { AddSeatsComponent } from './components/data/Transport/seats/add-seats/add-seats.component';
+import { ViewSeatsComponent } from './components/data/Transport/seats/view-seats/view-seats.component';
+import { EditSeatsComponent } from './components/data/Transport/seats/edit-seats/edit-seats.component';
+import { DeleteSeatsComponent } from './components/data/Transport/seats/delete-seats/delete-seats.component';
+import { ViewTransportationTypesComponent } from './components/data/Transport/transportationType/view-transportation-type/view-transportation-type.component';
+import { AddTransportationTypeComponent } from './components/data/Transport/transportationType/add-transportation-type/add-transportation-type.component';
+import { EditTransportationTypeComponent } from './components/data/Transport/transportationType/edit-transportation-type/edit-transportation-type.component';
+import { DeleteTransportationTypeComponent } from './components/data/Transport/transportationType/delete-transportation-type/delete-transportation-type.component';
+import { ViewTransportProvidersComponent } from './components/data/Transport/transportProvider/view-transport-provider/view-transport-provider.component';
+import { AddTransportProviderComponent } from './components/data/Transport/transportProvider/add-transport-provider/add-transport-provider.component';
+import { EditTransportProviderComponent } from './components/data/Transport/transportProvider/edit-transport-provider/edit-transport-provider.component';
+import { DeleteTransportProviderComponent } from './components/data/Transport/transportProvider/delete-transport-provider/delete-transport-provider.component';
 
 
 
@@ -36,7 +48,7 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'users', component: DisplayUserComponent },  
   { path: 'add-user', component: AddUserComponent }, 
-  {path: 'categories', component: ShowCategoryComponent},    
+  { path: 'categories', component: ShowCategoryComponent},    
   { path: 'add-category', component: AddCategoryComponent },
   { path: 'update-category/:id', component: UpdateCategoryComponent },
   { path: 'sub-categories', component: ShowSubCategoryComponent },
@@ -58,6 +70,8 @@ export const routes: Routes = [
   { path: 'schedule', component: ScheduleListComponent},
   { path: 'schedule/add', component: AddScheduleComponent},
   { path: 'schedule/edit/:id', component: UpdateScheduleComponent},
+  
+
 
 
   { path: 'facility', component: FacilityListComponent },
@@ -66,8 +80,25 @@ export const routes: Routes = [
 
 
 
- 
- 
+  { path: 'add-seats', component: AddSeatsComponent },
+  { path: 'view-seats', component: ViewSeatsComponent },
+  { path: 'edit-seats/:id', component: EditSeatsComponent }, // Dynamic route for editing seat by ID
+  { path: 'delete-seats/:id', component: DeleteSeatsComponent }, // Dynamic route for deleting seat by ID
+
+    
+
+  { path: 'transportation-types', component: ViewTransportationTypesComponent },
+  { path: 'transportation-types/add', component: AddTransportationTypeComponent },
+  { path: 'transportation-types/edit/:id', component: EditTransportationTypeComponent },
+  { path: 'delete-transportation-type/:id', component: DeleteTransportationTypeComponent },
+  
+
+  { path: 'transport-providers', component: ViewTransportProvidersComponent },
+  { path: 'transport-providers/add', component: AddTransportProviderComponent },
+  { path: 'transport-providers/edit/:id', component: EditTransportProviderComponent },
+  { path: 'transport-providers/delete/:id', component: DeleteTransportProviderComponent },
+
+
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 
