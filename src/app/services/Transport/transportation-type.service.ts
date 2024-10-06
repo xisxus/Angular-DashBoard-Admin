@@ -39,6 +39,6 @@ export class TransportationTypeService {
 
   // Delete a transportation type
   deleteType(id: number): Observable<{ success: boolean, message: string }> {
-    return this.http.delete<{ success: boolean, message: string }>(`${this.apiUrl}/delete-transportation-type/${id}`);
+    return this.http.delete<{ success: boolean, message: string }>(`${this.apiUrl}/delete-type/${id}`);
   }
 }

@@ -41,6 +41,12 @@ import { ViewTransportProvidersComponent } from './components/data/Transport/tra
 import { AddTransportProviderComponent } from './components/data/Transport/transportProvider/add-transport-provider/add-transport-provider.component';
 import { EditTransportProviderComponent } from './components/data/Transport/transportProvider/edit-transport-provider/edit-transport-provider.component';
 import { DeleteTransportProviderComponent } from './components/data/Transport/transportProvider/delete-transport-provider/delete-transport-provider.component';
+import { ShowMealtypeComponent } from './components/data/mealType/show-mealtype/show-mealtype.component';
+import { AddMealTypeComponent } from './components/data/mealType/add-mealtype/add-mealtype.component';
+import { UpdateMealTypeComponent } from './components/data/mealType/update-mealtype/update-mealtype.component';
+import { ShowFoodItemsComponent } from './components/data/foodItems/show-food-items/show-food-items.component';
+import { AddFoodItemComponent } from './components/data/foodItems/add-fooditems/add-fooditems.component';
+import { UpdateFoodItemComponent } from './components/data/foodItems/update-fooditems/update-fooditems.component';
 
 
 
@@ -90,7 +96,7 @@ export const routes: Routes = [
   { path: 'transportation-types', component: ViewTransportationTypesComponent },
   { path: 'transportation-types/add', component: AddTransportationTypeComponent },
   { path: 'transportation-types/edit/:id', component: EditTransportationTypeComponent },
-  { path: 'delete-transportation-type/:id', component: DeleteTransportationTypeComponent },
+  { path: 'delete-type/:id', component: DeleteTransportationTypeComponent },
   
 
   { path: 'transport-providers', component: ViewTransportProvidersComponent },
@@ -98,6 +104,15 @@ export const routes: Routes = [
   { path: 'transport-providers/edit/:id', component: EditTransportProviderComponent },
   { path: 'transport-providers/delete/:id', component: DeleteTransportProviderComponent },
 
+
+  
+ {path:'mealTypes',component:ShowMealtypeComponent},
+ {path:'add-mealType',component:AddMealTypeComponent},
+ { path: 'update-mealType/:id', component: UpdateMealTypeComponent },
+ {path:'foodItems', component:ShowFoodItemsComponent},
+ {path:'add-foodItems',component:AddFoodItemComponent},
+ { path: 'food-items', component: AddFoodItemComponent },
+ { path: 'update-fooditems/:id', component: UpdateFoodItemComponent },
 
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
