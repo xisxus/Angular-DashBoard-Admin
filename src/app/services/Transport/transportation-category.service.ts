@@ -19,7 +19,7 @@ export class TransportationCategoryService {
   constructor(private http: HttpClient) {}
 
   getTransportationCategories(): Observable<TransportationCatagory[]> {
-    return this.http.get<TransportationCatagory[]>(this.baseUrl, this.httpOptions);
+    return this.http.get<TransportationCatagory[]>(`${this.baseUrl}/get-all`, this.httpOptions);
   }
 
   getTransportationCategoryById(id: number): Observable<TransportationCatagory> {

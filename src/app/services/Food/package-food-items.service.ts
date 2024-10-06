@@ -11,8 +11,8 @@ export class PackageFoodItemsService {
 
   constructor(private http: HttpClient) {}
 
-  addPackageFoodItem(foodItem: PackageFoodItem): Observable<any> {
-    return this.http.post(`${this.apiUrl}/add-package-food-item`, foodItem);
+  addPackageFoodItem(foodItem: PackageFoodItem, packageID : number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add-package-food-item/${packageID}`, foodItem);
   }
 
   // http://localhost:5141/api/Package/add-package-food-item

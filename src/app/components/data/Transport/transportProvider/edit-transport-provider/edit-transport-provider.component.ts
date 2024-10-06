@@ -103,14 +103,20 @@ export class EditTransportProviderComponent implements OnInit {
 
   loadProvider() {
     if (this.id !== null) {
-      this.providerService.getProviderById(this.id).subscribe(response => {
-        // Adjust this to your response structure
-        if (response && response.data && response.data.$values) {
-          this.provider = response.data.$values[0];
-          console.log('Loaded provider:', this.provider);
-        } else {
-          console.error('Invalid provider data', response);
-        }
+      this.providerService.getProviderById(this.id).subscribe((response:any) => {
+     
+        
+        this.provider = response.data
+       
+        
+
+        // if (response && response.data && response.data.$values) {
+        //   this.provider = response.data.$values[0];
+        //   console.log('Loaded provider:', this.provider);
+        // } else {
+        //   console.error('Invalid provider data', response);
+        // }
+
       }, error => {
         console.error('Error loading provider:', error);
       });

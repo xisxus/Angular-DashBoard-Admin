@@ -7,6 +7,7 @@ import { MealTypeService } from '../../../../services/Food/meal-type.service';
 import { MealType } from '../../../../models/Food/meal-type';
 import { FoodItem } from '../../../../models/Food/FoodItem';
 import { FoodItemsService } from '../../../../services/Food/food-items.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-packagefooditems',
@@ -30,12 +31,19 @@ export class AddPackagefooditemsComponent  implements OnInit {
     scheduleTime: new Date()
   };
 
+  
   packageID: number = 0;
 
-  constructor(private packageFoodItemService: PackageFoodItemsService,private mealTypeService: MealTypeService,private foodItemsService: FoodItemsService) {}
+  constructor(private packageFoodItemService: PackageFoodItemsService,
+    private mealTypeService: MealTypeService,
+    private foodItemsService: FoodItemsService,
+    private route : ActivatedRoute) {}
+
+   
 
   ngOnInit(): void {
     // You should bind the method correctly with parentheses
+    this.packageID = Number(this.route.snapshot.paramMap.get('id'));
     this.getPackageFoodItems(String(this.packageID));
     this.getMealTypes();
     this.getAllFoodItems();
@@ -47,7 +55,7 @@ export class AddPackagefooditemsComponent  implements OnInit {
       return;
     }
 
-    this.packageFoodItemService.addPackageFoodItem(this.newFoodItem).subscribe(
+    this.packageFoodItemService.addPackageFoodItem(this.newFoodItem, this.packageID).subscribe(
       response => {
         console.log(response);
 
@@ -56,6 +64,7 @@ export class AddPackagefooditemsComponent  implements OnInit {
           // Re-fetch the updated list of food items after adding
           this.getPackageFoodItems(String(this.newFoodItem.packageID));
           this.resetForm(); // Optional: reset the form after adding
+         
         } else {
           alert('Error: ' + response.message);
         }
@@ -66,8 +75,8 @@ export class AddPackagefooditemsComponent  implements OnInit {
     );
   }
 
-  getPackageFoodItems(packageIdInputValue: string): void {
-    const packageId = parseInt(packageIdInputValue); // Convert the string to a number
+  getPackageFoodItems(packageID: string): void {
+    const packageId = parseInt(packageID); // Convert the string to a number
     if (!isNaN(packageId)) {
       this.packageFoodItemService.getPackageFoodItems(packageId).subscribe(
         response => {

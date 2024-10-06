@@ -24,8 +24,8 @@ export class ScheduleService {
   }
 
   // Add a new schedule
-  addSchedule(schedule: Schedule): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add-schedule`, schedule);
+  addSchedule(schedule: Schedule, packageID: number): Observable<any> {
+    return this.http.post(`${this.baseUrl}/add-schedule/${packageID}`, schedule);
   }
 
   // Update an existing schedule

@@ -49,6 +49,8 @@ import { AddFoodItemComponent } from './components/data/foodItems/add-fooditems/
 import { UpdateFoodItemComponent } from './components/data/foodItems/update-fooditems/update-fooditems.component';
 import { ShowPackagefooditemsComponent } from './components/data/packagefooditem/show-packagefooditems/show-packagefooditems.component';
 import { AddPackagefooditemsComponent } from './components/data/packagefooditem/add-packagefooditems/add-packagefooditems.component';
+import { AddPackageTransportationComponent } from './components/data/Transport/packageTransportation/add-package-transportation/add-package-transportation.component';
+import { ViewPackageTransportationComponent } from './components/data/Transport/packageTransportation/view-package-transportation/view-package-transportation.component';
 
 
 
@@ -76,6 +78,7 @@ export const routes: Routes = [
   { path: 'package/addBudget/:id', component: GetPackageDetailsComponent},
   { path: 'package/voucher', component: TourVoucherComponent},
   { path: 'schedule', component: ScheduleListComponent},
+  { path: 'schedule/add/:id', component: AddScheduleComponent},
   { path: 'schedule/add', component: AddScheduleComponent},
   { path: 'schedule/edit/:id', component: UpdateScheduleComponent},
   
@@ -117,9 +120,11 @@ export const routes: Routes = [
  { path: 'update-fooditems/:id', component: UpdateFoodItemComponent },
 
  {path:'packageFoodItemsList',component: ShowPackagefooditemsComponent},
+ {path:'add-PackagefoodItems/:id',component:AddPackagefooditemsComponent},
  {path:'add-PackagefoodItems',component:AddPackagefooditemsComponent},
  
-
+ { path: 'package/transportation', component: ViewPackageTransportationComponent },
+ { path: 'package/transportation/add', component: AddPackageTransportationComponent },
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 
