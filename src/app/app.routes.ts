@@ -47,6 +47,8 @@ import { UpdateMealTypeComponent } from './components/data/mealType/update-mealt
 import { ShowFoodItemsComponent } from './components/data/foodItems/show-food-items/show-food-items.component';
 import { AddFoodItemComponent } from './components/data/foodItems/add-fooditems/add-fooditems.component';
 import { UpdateFoodItemComponent } from './components/data/foodItems/update-fooditems/update-fooditems.component';
+import { ShowPackagefooditemsComponent } from './components/data/packagefooditem/show-packagefooditems/show-packagefooditems.component';
+import { AddPackagefooditemsComponent } from './components/data/packagefooditem/add-packagefooditems/add-packagefooditems.component';
 
 
 
@@ -113,6 +115,10 @@ export const routes: Routes = [
  {path:'add-foodItems',component:AddFoodItemComponent},
  { path: 'food-items', component: AddFoodItemComponent },
  { path: 'update-fooditems/:id', component: UpdateFoodItemComponent },
+
+ {path:'packageFoodItemsList',component: ShowPackagefooditemsComponent},
+ {path:'add-PackagefoodItems',component:AddPackagefooditemsComponent},
+ 
 
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }

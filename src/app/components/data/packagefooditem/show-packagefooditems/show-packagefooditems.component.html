@@ -1,0 +1,31 @@
+<!-- Input field and button to get package food items by package ID -->
+<div>
+  <label for="packageIdInput">Enter Package ID:</label>
+  <input id="packageIdInput" #packageIdInput type="number" placeholder="Package ID">
+  <button (click)="getPackageFoodItems(packageIdInput.value)">Get Package Food Items</button>
+</div>
+
+<a class="btn btn-outline-primary shadow-sm" routerLink="/add-PackagefoodItems">
+  <i class="bi bi-plus-circle"></i> Add New PackageFood Item
+</a>
+<hr>
+
+<!-- List of package food items -->
+<h3>Food Items for Package</h3>
+<ul *ngIf="packageFoodItems.length > 0; else noItemsFound">
+  <li *ngFor="let item of packageFoodItems">
+    <strong>Food Item ID:</strong> {{ item.foodItemID }} <br>
+    <strong>Meal Type ID:</strong> {{ item.mealTypeID }} <br>
+    <strong>Package Day Number:</strong> {{ item.packageDayNumber }} <br>
+    <strong>Quantity:</strong> {{ item.foodQuantity }} <br>
+    <strong>Unit Price:</strong> {{ item.foodUnitPrice }} <br>
+    <strong>Total Cost:</strong> {{ item.itemTotalCost }} <br>
+    <strong>Schedule Time:</strong> {{ item.scheduleTime }} <br>
+    <hr>
+  </li>
+</ul>
+
+<!-- Display message when no food items are found -->
+<ng-template #noItemsFound>
+  <p>No food items found for this package.</p>
+</ng-template>
