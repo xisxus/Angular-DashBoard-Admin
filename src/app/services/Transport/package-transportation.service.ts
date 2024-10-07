@@ -21,11 +21,11 @@ export class PackageTransportationService {
   }
 
   getPackageTransportationById(id: number): Observable<PackageTransportation> {
-    return this.http.get<PackageTransportation>(`${this.baseUrl}/${id}`, this.httpOptions);
+    return this.http.get<PackageTransportation>(`${this.baseUrl}/transport/get/${id}`, this.httpOptions);
   }
 
-  createPackageTransportation(pkgTrans: PackageTransportation): Observable<PackageTransportation> {
-    return this.http.post<PackageTransportation>(this.baseUrl, pkgTrans, this.httpOptions);
+  createPackageTransportation(id: number,pkgTrans: PackageTransportation): Observable<PackageTransportation> {
+    return this.http.post<PackageTransportation>(`${this.baseUrl}/transport/add/${id}`, pkgTrans, this.httpOptions);
   }
 
   updatePackageTransportation(id: number, pkgTrans: PackageTransportation): Observable<PackageTransportation> {

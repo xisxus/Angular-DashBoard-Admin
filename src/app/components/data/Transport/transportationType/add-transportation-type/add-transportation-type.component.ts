@@ -24,7 +24,7 @@ export class AddTransportationTypeComponent {
       next: response => {
         if (response.success) {
           this.successMessage = response.message;
-          this.router.navigate(['/transportation-types']); // Navigate to list view after adding
+          this.router.navigateByUrl(`/${response.url}`); // Navigate to list view after adding
         }
       },
       error: error => {

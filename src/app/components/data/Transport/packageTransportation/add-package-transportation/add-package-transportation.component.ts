@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { TransportationCatagory } from '../../../../../models/Transport/transportation-catagory';
 import { TransportationTypeService } from '../../../../../services/Transport/transportation-type.service';
 import { TransportationCategoryService } from '../../../../../services/Transport/transportation-category.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-package-transportation',
@@ -20,6 +21,7 @@ import { TransportationCategoryService } from '../../../../../services/Transport
 export class AddPackageTransportationComponent implements OnInit {
   transportationTypes: any[] = []; 
   transportationCategories: any[] = []; 
+
   newTransportationItem: any = { 
     packageID: 0,
     transportationTypeID: 0,
@@ -30,28 +32,50 @@ export class AddPackageTransportationComponent implements OnInit {
     perHeadTransportCost: 0,
   };
 
-  packageID: number = 0; 
+  prevTransport :any[] =[]
 
-  constructor(private cataService : TransportationCategoryService ,private packageTransportationService: PackageTransportationService , private typeservice: TransportationTypeService) {}
+  packageID: number = 0; 
+  ide:any
+
+  constructor(private cataService : TransportationCategoryService ,
+    private packageTransportationService: PackageTransportationService ,
+     private typeservice: TransportationTypeService,
+    private route : ActivatedRoute, private navig : Router
+    ) {}
 
   ngOnInit(): void {
     this.getTransportationTypes(); 
   this.getTransportationCategories(); 
   //this.getPackageTransportations(String(this.packageID)); 
+   this.ide = this.route.snapshot.paramMap.get('id')
+  this.LoadTransport()
+  
+  }  
+
+
+  LoadTransport(){
+    this.packageTransportationService.getPackageTransportationById(this.ide).subscribe((res:any)=>{
+      console.log('reee',res);
+      this.prevTransport = res.transportationItems.$values
+      
+    })
   }
+
 
   addPackageTransportation(): void {
     if (this.newTransportationItem.transportationTypeID === 0 || this.newTransportationItem.transportationID === 0) {
       alert('Transportation Type ID and Transportation ID cannot be null');
       return;
     }
-
-    this.packageTransportationService.createPackageTransportation(this.newTransportationItem).subscribe(
+    
+    this.newTransportationItem.packageID = this.ide
+    this.packageTransportationService.createPackageTransportation(this.ide, this.newTransportationItem).subscribe(
       (response:any) => {
         console.log(response);
 
         if (response.success) {
           alert('Package transportation added successfully');
+          this.LoadTransport();
           this.resetForm(); 
         } else {
           alert('Error: ' + response.message);
@@ -61,6 +85,11 @@ export class AddPackageTransportationComponent implements OnInit {
         console.error('Error adding package transportation:', error);
       }
     );
+  }
+
+  SaveExit(){
+    this.addPackageTransportation();
+    this.navig.navigateByUrl('/dashboard')
   }
   
 
@@ -83,7 +112,7 @@ export class AddPackageTransportationComponent implements OnInit {
      // console.log(response);
       
       this.transportationTypes = response.data.$values; 
-      //console.log('Transportation Types:', this.transportationTypes);
+      console.log('Transportation Types:', this.transportationTypes);
     });
   }
 
@@ -96,4 +125,19 @@ export class AddPackageTransportationComponent implements OnInit {
       console.log('Transportation Categories:', this.transportationCategories);
     });
   }
+
+
+  getTransportationTypeName(id: number): string {
+    const type = this.transportationTypes.find(t => t.transportationTypeID === id);
+    return type ? type.typeName : 'Unknown';
+}
+
+// Method to get the transportation category name by ID
+getTransportationCategoryName(id: number): string {
+    const category = this.transportationCategories.find(c => c.transportationCatagoryID === id);
+    return category ? category.transportationCatagoryName : 'Unknown';
+}
+
+
+
 }

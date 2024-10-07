@@ -131,6 +131,7 @@ export const routes: Routes = [
  
  { path: 'package/transportation', component: ViewPackageTransportationComponent },
  { path: 'package/transportation/add', component: AddPackageTransportationComponent },
+ { path: 'package/transportation/add/:id', component: AddPackageTransportationComponent },
 
 
  { path: 'add-location', component: AddLocationComponent },
