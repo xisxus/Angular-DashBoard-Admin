@@ -51,6 +51,12 @@ import { ShowPackagefooditemsComponent } from './components/data/packagefooditem
 import { AddPackagefooditemsComponent } from './components/data/packagefooditem/add-packagefooditems/add-packagefooditems.component';
 import { AddPackageTransportationComponent } from './components/data/Transport/packageTransportation/add-package-transportation/add-package-transportation.component';
 import { ViewPackageTransportationComponent } from './components/data/Transport/packageTransportation/view-package-transportation/view-package-transportation.component';
+import { AddLocationComponent } from './components/data/Location/location/add-location/add-location.component';
+import { LocationListComponent } from './components/data/Location/location/location-list/location-list.component';
+import { EditLocationComponent } from './components/data/Location/location/edit-location/edit-location.component';
+import { LocationGallerylistComponent } from './components/data/Location/location-gallery/location-gallerylist/location-gallerylist.component';
+import { AddLocationGalleryComponent } from './components/data/Location/location-gallery/add-location-gallery/add-location-gallery.component';
+import { UpdateLocationgalleryComponent } from './components/data/Location/location-gallery/update-locationgallery/update-locationgallery.component';
 
 
 
@@ -125,6 +131,16 @@ export const routes: Routes = [
  
  { path: 'package/transportation', component: ViewPackageTransportationComponent },
  { path: 'package/transportation/add', component: AddPackageTransportationComponent },
+
+
+ { path: 'add-location', component: AddLocationComponent },
+  { path: 'location', component: LocationListComponent },
+  { path: 'edit-location/:id', component: EditLocationComponent },
+  { path: '', redirectTo: '/locations', pathMatch: 'full' },
+  {path:'locationGalleryList',component:LocationGallerylistComponent},
+  {path:'add-locationGallery',component:AddLocationGalleryComponent},
+  {path:'update-LocationGallery/:id',component:UpdateLocationgalleryComponent},
+
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
 
