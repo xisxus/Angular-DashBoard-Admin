@@ -15,27 +15,27 @@ export class ScheduleService {
 
   // Get all schedules by packageID
   getSchedulesByPackageID(packageID: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get-schedules/${packageID}`);
+    return this.http.get(`${this.baseUrl}/schedule/get/${packageID}`);
   }
 
   // Get schedule by scheduleID and packageID
   getScheduleById(packageID: number, scheduleID: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/get-schedule/${packageID}/${scheduleID}`);
+    return this.http.get(`${this.baseUrl}/schedule/get/${packageID}/${scheduleID}`);
   }
 
   // Add a new schedule
   addSchedule(schedule: Schedule, packageID: number): Observable<any> {
-    return this.http.post(`${this.baseUrl}/add-schedule/${packageID}`, schedule);
+    return this.http.post(`${this.baseUrl}/schedule/add/${packageID}`, schedule);
   }
 
   // Update an existing schedule
   updateSchedule(scheduleID: number, schedule: Schedule): Observable<any> {
-    return this.http.put(`${this.baseUrl}/update-schedule/${scheduleID}`, schedule);
+    return this.http.put(`${this.baseUrl}/schedule/edit/${scheduleID}`, schedule);
   }
 
   // Delete a schedule by ID
   deleteSchedule(scheduleID: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/delete-schedule/${scheduleID}`);
+    return this.http.delete(`${this.baseUrl}/schedule/delete/${scheduleID}`);
   }
 }
 
