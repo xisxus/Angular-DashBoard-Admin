@@ -118,7 +118,7 @@ export class AddPackageTransportationComponent implements OnInit {
 
   getTransportationCategories(): void {
     
-    this.cataService.getTransportationCategories().subscribe((response: any) => {
+    this.cataService.getAllCategories().subscribe((response: any) => {
       console.log(response);
       
       this.transportationCategories = response.data.$values; // Adjust based on your API response structure

@@ -17,17 +17,17 @@ export class TransportProviderService {
 
   // Get all transport providers
   getAllProviders(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.apiUrl}/providers`);
+    return this.http.get<ApiResponse>(`${this.apiUrl}/get`);
   }
 
   // Get a transport provider by ID
   getProviderById(id: any): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(`${this.apiUrl}/get-provider-by-id/${id}`);
+    return this.http.get<ApiResponse>(`${this.apiUrl}/get/${id}`);
   }
 
   // Add a new transport provider
   addProvider(provider: TransportProviderInputModel): Observable<ApiResponse> {
-    return this.http.post<ApiResponse>(`${this.apiUrl}/add-provider`, provider, {
+    return this.http.post<ApiResponse>(`${this.apiUrl}/add`, provider, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -36,7 +36,7 @@ export class TransportProviderService {
 
   
   updateProvider(id: number, provider: TransportProviderInputModel): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(`${this.apiUrl}/update-provider/${id}`, provider, {
+    return this.http.put<ApiResponse>(`${this.apiUrl}/edit/${id}`, provider, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
@@ -46,6 +46,6 @@ export class TransportProviderService {
 
   // Delete a transport provider
   deleteProvider(id: number): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(`${this.apiUrl}/delete-provider/${id}`);
+    return this.http.delete<ApiResponse>(`${this.apiUrl}/delete/${id}`);
   }
 }

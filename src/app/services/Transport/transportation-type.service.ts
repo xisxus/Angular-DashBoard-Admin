@@ -17,28 +17,28 @@ export class TransportationTypeService {
 
   // Get all transportation types
   getAllTypes(): Observable<{ success: boolean, data: TransportationTypeOutputModel[] }> {
-    return this.http.get<{ success: boolean, data: TransportationTypeOutputModel[] }>(`${this.apiUrl}/get-all`);
+    return this.http.get<{ success: boolean, data: TransportationTypeOutputModel[] }>(`${this.apiUrl}/get`);
   }
 
   // Get transportation type by ID
   getTypeById(id: number): Observable<{ success: boolean, data: TransportationTypeOutputModel }> {
-    return this.http.get<{ success: boolean, data: TransportationTypeOutputModel }>(`${this.apiUrl}/get-by-id/${id}`);
+    return this.http.get<{ success: boolean, data: TransportationTypeOutputModel }>(`${this.apiUrl}/get/${id}`);
   }
 
   // Add a new transportation type
   addType(model: TransportationTypeInsertModel, customUrl?: string): Observable<{ success: boolean, message: string, typeId: number, url: string }> {
-    return this.http.post<{ success: boolean, message: string, typeId: number, url: string }>(`${this.apiUrl}/add-type`, model, {
+    return this.http.post<{ success: boolean, message: string, typeId: number, url: string }>(`${this.apiUrl}/add`, model, {
       params: customUrl ? { customUrl } : {}
     });
   }
 
   // Update an existing transportation type
   updateType(id: number, transportationType: TransportationTypeOutputModel): Observable<any> {
-    return this.http.put<{ success: boolean, message: string }>(`${this.apiUrl}/update-type/${id}`, transportationType);
+    return this.http.put<{ success: boolean, message: string }>(`${this.apiUrl}/update/${id}`, transportationType);
   }
 
   // Delete a transportation type
   deleteType(id: number): Observable<{ success: boolean, message: string }> {
-    return this.http.delete<{ success: boolean, message: string }>(`${this.apiUrl}/delete-type/${id}`);
+    return this.http.delete<{ success: boolean, message: string }>(`${this.apiUrl}/delete/${id}`);
   }
 }

@@ -65,6 +65,12 @@ import { EditRequestUrlComponent } from './components/data/UrlService/edit-reque
 import { EditUrlServiceComponent } from './components/data/UrlService/edit-url-service/edit-url-service.component';
 import { AddPackageDetailsComponent } from './components/data/PackageDetails/add-package-details/add-package-details.component';
 import { PackageCreateComponent } from './components/data/Package/package-create/package-create.component';
+import { ViewTransportationComponent } from './components/data/Transport/transportation/view-transportation/view-transportation.component';
+import { AddTransportationComponent } from './components/data/Transport/transportation/add-transportation/add-transportation.component';
+import { EditTransportationComponent } from './components/data/Transport/transportation/edit-transportation/edit-transportation.component';
+import { ViewTransportationCatagory } from './components/data/Transport/transportationCatagory/view-transportation-catagory/view-transportation-catagory.component';
+import { AddTransportationCatagoryComponent } from './components/data/Transport/transportationCatagory/add-transportation-catagory/add-transportation-catagory.component';
+import { EditTransportationCatagoryComponent } from './components/data/Transport/transportationCatagory/edit-transportation-catagory/edit-transportation-catagory.component';
 
 
 
@@ -158,6 +164,17 @@ export const routes: Routes = [
  { path: 'locationGallery', component: LocationGallerylistComponent },
  { path: 'locationGallery/add', component: AddLocationGalleryComponent },
  { path: 'locationGallery/edit/:id', component: UpdateLocationgalleryComponent },
+
+
+ { path: 'api/Transportation/getAll', component: ViewTransportationComponent },
+ { path: 'api/Transportation/add', component: AddTransportationComponent },
+ { path: 'api/Transportation/update/:id', component: EditTransportationComponent }, 
+
+ { path: 'api/TransportationCatagory/get', component: ViewTransportationCatagory }, // Route for viewing categories
+ { path: 'api/TransportationCatagory/add', component: AddTransportationCatagoryComponent }, // Route for adding a category
+ 
+ { path: 'api/TransportationCatagory/update/:id', component:EditTransportationCatagoryComponent  }, // Route for editing a category
+
 
 
 

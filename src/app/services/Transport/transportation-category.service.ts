@@ -1,40 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TransportationCatagory } from '../../models/Transport/transportation-catagory';
+import { TransportationCategoryInputModel } from '../../models/Transport/transportation-category-input-model';
 
 
-// import { TransportationCategory } from '../models/transportation-category.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransportationCategoryService {
-  private baseUrl = 'http://localhost:5141/api/TransportationCatagory';  // Adjust base URL
+  private apiUrl = 'http://localhost:5141/api/TransportationCatagory';
 
-  private httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
-
-  getTransportationCategories(): Observable<TransportationCatagory[]> {
-    return this.http.get<TransportationCatagory[]>(`${this.baseUrl}/get-all`, this.httpOptions);
+  getAllCategories(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/get`);
   }
 
-  getTransportationCategoryById(id: number): Observable<TransportationCatagory> {
-    return this.http.get<TransportationCatagory>(`${this.baseUrl}/${id}`, this.httpOptions);
+  getCategoryById(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/get/${id}`);
   }
 
-  createTransportationCategory(category: TransportationCatagory): Observable<TransportationCatagory> {
-    return this.http.post<TransportationCatagory>(this.baseUrl, category, this.httpOptions);
+  addCategory(category: TransportationCategoryInputModel): Observable<any> {
+    return this.http.post(`${this.apiUrl}/add`, category);
   }
 
-  updateTransportationCategory(id: number, category: TransportationCatagory): Observable<TransportationCatagory> {
-    return this.http.put<TransportationCatagory>(`${this.baseUrl}/${id}`, category, this.httpOptions);
+  updateCategory(id: number, category: TransportationCategoryInputModel): Observable<any> {
+    return this.http.put(`${this.apiUrl}/update/${id}`, category);
   }
 
-  deleteTransportationCategory(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`, this.httpOptions);
+  deleteCategory(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/delete/${id}`);
   }
 }
