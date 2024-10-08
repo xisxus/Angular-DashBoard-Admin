@@ -19,8 +19,12 @@ export class FacilityCreateComponent {
   constructor(private facilityService: FacilityService, private router: Router) { }
 
   createFacility(): void {
-    this.facilityService.createFacility(this.newFacility).subscribe(() => {
-      this.router.navigate(['/facility']);
+    this.facilityService.createFacility(this.newFacility).subscribe((res:any) => {
+      console.log('====================================');
+      console.log(res);
+      console.log('====================================');
+      alert('facility added successfully!');
+      this.router.navigateByUrl(res.requestUrl)
     });
   }
 }

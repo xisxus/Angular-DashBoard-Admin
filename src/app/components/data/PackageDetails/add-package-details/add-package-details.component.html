@@ -1,0 +1,46 @@
+<div class="container">
+  <h2 class="display-6 fw-bold text-center">Add Package Details</h2>
+  <form [formGroup]="packageDetailsForm" (ngSubmit)="onSubmit()">
+    <!-- <div class="form-group mt-2">
+      <label class="fw-bold" for="packageID">Package ID</label>
+      <input id="packageID" formControlName="packageID" type="number" class="form-control"
+        placeholder="Enter Package ID" />
+    </div> -->
+
+    <div class="form-group mt-2">
+      <label class="fw-bold" for="packageDuration">Package Duration (Days)</label>
+      <input id="packageDuration" formControlName="packageDuration" type="number" class="form-control"
+        placeholder="Enter Package Duration" />
+    </div>
+
+    <div class="form-group mt-2">
+      <label class="fw-bold" for="startDate">Start Date</label>
+      <input id="startDate" formControlName="startDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group mt-2">
+      <label class="fw-bold" for="endDate">End Date</label>
+      <input id="endDate" formControlName="endDate" type="date" class="form-control" />
+    </div>
+
+    <div class="form-group mt-2">
+      <label class="fw-bold" for="pickupPoint">Pickup Point</label>
+      <input id="pickupPoint" formControlName="pickupPoint" type="text" class="form-control"
+        placeholder="Enter Pickup Point" />
+    </div>
+
+    <div class="form-group mt-2">
+      <label class="fw-bold" for="maximumPerson">Maximum Persons</label>
+      <input id="maximumPerson" formControlName="maximumPerson" type="number" class="form-control"
+        placeholder="Enter Maximum Persons" />
+    </div>
+
+    <div class="form-group mt-2">
+      <label class="fw-bold" for="minimumPerson">Minimum Persons</label>
+      <input id="minimumPerson" formControlName="minimumPerson" type="number" class="form-control"
+        placeholder="Enter Minimum Persons" />
+    </div>
+
+    <button type="submit" class="btn btn-outline-primary btn-sm mt-3">Save Details</button>
+  </form>
+</div>

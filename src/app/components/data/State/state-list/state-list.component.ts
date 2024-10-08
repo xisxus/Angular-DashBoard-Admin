@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { State } from '../../../../models/State/state';
 import { StateService } from '../../../../services/State/state.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, JsonPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-state-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink,JsonPipe],
   templateUrl: './state-list.component.html',
   styleUrl: './state-list.component.css'
 })
 export class StateListComponent implements OnInit {
-  states: State[] = [];
+  states: any[] = [];
 
   constructor(private stateService: StateService) {}
 

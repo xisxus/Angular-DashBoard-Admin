@@ -10,24 +10,16 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Location Name</th>
-          <th scope="col">Country Name</th>
           <th scope="col">State Name</th>
-          <th scope="col">Gallery Image</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let location of locations">
           <td>{{ location.locationName }}</td>
-          <td>{{ location.countryName }}</td>
           <td>{{ location.stateName }}</td>
           <td>
-            <img *ngIf="location.locationGalleries.$values.length > 0" 
-                 [src]="location.locationGalleries.$values[0]" 
-                 alt="Gallery Image" 
-                 style="max-width: 100px; max-height: 100px; object-fit: cover;">
-          </td>
-          <td>
+            <!-- Action Buttons -->
             <button class="btn btn-warning btn-sm me-2" (click)="navigateToEditLocation(location.locationID)">
               Edit
             </button>
@@ -38,6 +30,5 @@
         </tr>
       </tbody>
     </table>
-</div>
-
+  </div>
 </div>

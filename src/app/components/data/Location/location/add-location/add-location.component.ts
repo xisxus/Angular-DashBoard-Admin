@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationInsertModel } from '../../../../../models/Location model/location-insert-model';
+
 import { LocationService } from '../../../../../services/Location/location.service';
 import { CommonModule, JsonPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { LocationInsertModel } from '../../../../../models/Location model/location-insert-model';
+import { StateService } from '../../../../../services/State/state.service';
 
 @Component({
   selector: 'app-add-location',
@@ -17,7 +19,8 @@ export class AddLocationComponent implements OnInit {
   location: LocationInsertModel = { locationName: '', locationDescription: '', stateID: 0 };
   state : any[] =[]
 
-  constructor(private locationService: LocationService, private http : HttpClient , private navi : Router) {}
+  constructor(private stateSer : StateService,
+    private locationService: LocationService, private http : HttpClient , private navi : Router) {}
 
 
   ngOnInit(): void {
@@ -26,7 +29,7 @@ export class AddLocationComponent implements OnInit {
 
 
   getState(){
-    this.http.get('http://localhost:5141/api/State').subscribe((res: any) => {
+    this.stateSer.getStates().subscribe((res: any) => {
       console.log(res); // Log the entire response to verify
       // Check if the response is already an array
       if (Array.isArray(res)) {
@@ -45,7 +48,8 @@ export class AddLocationComponent implements OnInit {
       next: (response) => {
         console.log('Location added successfully', response);
         this.location = { locationName: '', locationDescription: '', stateID: 0 };
-        alert('Location added successfully!');      
+        alert('Location added successfully!');  
+        this.navi.navigateByUrl(response.requestUrl)
       },
       error: (err) => {
         console.error('Error adding location', err);

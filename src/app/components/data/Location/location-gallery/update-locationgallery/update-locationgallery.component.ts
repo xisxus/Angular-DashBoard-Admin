@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { LocationGalleryService } from '../../../../../services/Location/location-gallery.service';
-import { LocationGalleryInsertModel } from '../../../../../models/Location model/LocationGalleryInsertModel';
+
 import { CommonModule } from '@angular/common';
+import { LocationGalleryInsertModel } from '../../../../../models/Location model/LocationGalleryInsertModel';
 
 @Component({
   selector: 'app-update-location-gallery',

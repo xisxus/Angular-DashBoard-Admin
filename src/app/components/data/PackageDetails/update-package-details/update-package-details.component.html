@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Update Package Details</h2>
+
+  <form [formGroup]="packageDetailsForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="packageDuration">Package Duration:</label>
+      <input id="packageDuration" type="number" formControlName="packageDuration" />
+      <div
+        *ngIf="packageDetailsForm.controls['packageDuration'].invalid && packageDetailsForm.controls['packageDuration'].touched">
+        Duration is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="startDate">Start Date:</label>
+      <input id="startDate" type="date" formControlName="startDate" />
+      <div *ngIf="packageDetailsForm.controls['startDate'].invalid && packageDetailsForm.controls['startDate'].touched">
+        Start Date is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="endDate">End Date:</label>
+      <input id="endDate" type="date" formControlName="endDate" />
+      <div *ngIf="packageDetailsForm.controls['endDate'].invalid && packageDetailsForm.controls['endDate'].touched">
+        End Date is required.
+      </div>
+    </div>
+
+    <!-- Other fields like pickupPoint, maximumPerson, minimumPerson -->
+
+    <button type="submit" [disabled]="packageDetailsForm.invalid">Update</button>
+  </form>
+</div>

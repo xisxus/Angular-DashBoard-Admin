@@ -7,7 +7,7 @@ import { MealType } from '../../models/Food/meal-type';
   providedIn: 'root'
 })
 export class MealTypeService {
- 
+
   private apiUrl = 'http://localhost:5141/api/MealTypes';
 
   httpOptions = {
@@ -31,20 +31,20 @@ export class MealTypeService {
 
   // Add a new meal type
   addMealType(mealType: MealType): Observable<MealType> {
-    return this.http.post<MealType>(this.apiUrl, mealType, this.httpOptions);
+    const url = `${this.apiUrl}/add`;
+    return this.http.post<MealType>(url, mealType, this.httpOptions);
   }
 
   // Update an existing meal type
   updateMealType(id: number, mealType: MealType): Observable<any> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}/edit/${id}`;
     return this.http.put(url, mealType, this.httpOptions);
   }
 
   // Delete a meal type
   deleteMealType(id: number): Observable<MealType> {
-    const url = `${this.apiUrl}/${id}`;
+    const url = `${this.apiUrl}/delete/${id}`;
     return this.http.delete<MealType>(url, this.httpOptions);
   }
 }
-
 

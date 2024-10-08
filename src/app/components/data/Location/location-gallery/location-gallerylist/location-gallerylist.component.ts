@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationGallery } from '../../../../../models/Location model/LocationGallery';
+
 import { LocationGalleryService } from '../../../../../services/Location/location-gallery.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { LocationService } from '../../../../../services/Location/location.service';
+import { LocationGallery } from '../../../../../models/Location model/LocationGallery';
 
 @Component({
   selector: 'app-location-gallerylist',
@@ -15,23 +16,62 @@ import { LocationService } from '../../../../../services/Location/location.servi
 })
 export class LocationGallerylistComponent implements OnInit {
   locationGalleries: LocationGallery[] = [];
-  selectedLocationId: number = 0; // If you want a default location ID
-  imageUrl: string = '';  // Declare a variable for the image URL
-  backendUrl: string = 'http://localhost:5141'; // Define backend server URL
-  constructor(private locationGalleryService: LocationGalleryService, private locationService: LocationService) {}
+  locations: any[] = []; // Store locations for the dropdown
+  selectedLocationId: number = 0; // Selected location ID
+  imageUrl: string = ''; // Image URL
+  backendUrl: string = 'http://localhost:5141'; // Backend URL
+
+  constructor(
+    private locationGalleryService: LocationGalleryService,
+    private locationService: LocationService // Inject LocationService
+  ) {}
 
   ngOnInit(): void {
-    // If you have a default location ID, call the function with the default value.
-    this.getGalleriesByLocationId(this.selectedLocationId.toString()); 
-    this.loadLocations();
+    this.loadLocations(); // Load locations when component initializes
   }
 
+  // // Load all locations from the service
+  // loadLocations(): void {
+  //   this.locationService.getLocations().subscribe((locations) => {
+  //     this.locations = locations; // Store the fetched locations
+  //   });
+  // }
 
-  locations: any[] = [];
-
+  // Fetch galleries based on the selected location ID
+  getGalleriesByLocationId(): void {
+    if (this.selectedLocationId > 0) {
+      this.locationGalleryService.getGalleriesByLocationId(this.selectedLocationId).subscribe(response => {
+        console.log('API Response:', response);
   
+        if (response.$values && Array.isArray(response.$values)) {
+          this.locationGalleries = response.$values;
+  
+          if (this.locationGalleries.length > 0 && this.locationGalleries[0].imageUrl) {
+            const imageFileName = this.locationGalleries[0].imageUrl;
+            this.imageUrl = `${this.backendUrl}${imageFileName}`;
+          } else {
+            console.log('No imageUrl found in the response.');
+            this.imageUrl = '';
+          }
+        } else {
+          console.log('No galleries found for this location.');
+          this.locationGalleries = [];
+        }
+      });
+    } else {
+      console.error('Invalid Location ID');
+    }
+  }
 
- 
+  // Delete a gallery and reload the list
+  onDelete(id: number): void {
+    if (confirm('Are you sure you want to delete this gallery?')) {
+      this.locationGalleryService.deleteGallery(id).subscribe(() => {
+        console.log('Gallery deleted successfully');
+        this.getGalleriesByLocationId(); // Refresh the gallery list
+      });
+    }
+  }
 
   loadLocations(): void {
     this.locationService.getLocations().subscribe(
@@ -45,51 +85,6 @@ export class LocationGallerylistComponent implements OnInit {
     );
   }
 
-
-
-
-
-
-
-
-  getGalleriesByLocationId(locationIdInputValue: string): void {
-    const locationId = parseInt(locationIdInputValue, 10); // Convert input string to number
-  
-    if (!isNaN(locationId) && locationId > 0) {
-      this.locationGalleryService.getGalleriesByLocationId(locationId).subscribe(response => {
-        console.log('API Response:', response);
-  
-        if (response.$values && Array.isArray(response.$values)) {
-          this.locationGalleries = response.$values;
-  
-          if (this.locationGalleries.length > 0 && this.locationGalleries[0].imageUrl) {
-           
-            const imageFileName = this.locationGalleries[0].imageUrl;
-           
-            this.imageUrl = `${this.backendUrl}${imageFileName}`; 
-          } else {
-            console.log('No imageUrl found in the response.');
-            this.imageUrl = '';  
-          }
-        } else {
-          console.log('No galleries found for this location.');
-          this.locationGalleries = [];
-        }
-      });
-    } else {
-      console.error('Invalid Location ID');
-    }
-  }
-  
-  
-    onDelete(id: number, locationIdInputValue: string): void {
-    if (confirm('Are you sure you want to delete this gallery?')) {
-      this.locationGalleryService.deleteGallery(id).subscribe(() => {
-        console.log('Gallery deleted successfully');
-        this.getGalleriesByLocationId(locationIdInputValue); // Refresh the gallery list
-      });
-    }
-  }
 }
  
 

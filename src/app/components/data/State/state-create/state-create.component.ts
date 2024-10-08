@@ -21,8 +21,12 @@ export class StateCreateComponent {
   constructor(private stateService: StateService, private router: Router) {}
 
   createState(): void {
-    this.stateService.createState(this.state).subscribe(() => {
-      this.router.navigate(['/states']);
+    this.stateService.createState(this.state).subscribe((res:any) => {
+      console.log('====================================');
+      console.log(res);
+      console.log('====================================');
+      alert('state add successfully!');
+      this.router.navigateByUrl(res.requestUrl);
     });
   }
 }

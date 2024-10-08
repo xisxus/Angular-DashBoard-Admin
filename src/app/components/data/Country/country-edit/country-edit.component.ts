@@ -46,9 +46,12 @@ export class CountryEditComponent implements OnInit {
         countryID: this.countryId,
         countryName: this.countryForm.value.countryName
       };
-      this.countryService.updateCountry(this.countryId, updatedCountry).subscribe(() => {
+      this.countryService.updateCountry(this.countryId, updatedCountry).subscribe((res:any) => {
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
         alert('Country updated successfully!');
-        this.navigate.navigateByUrl('countries')
+        this.navigate.navigateByUrl(res.requestUrl)
       });
     }
   }

@@ -48,8 +48,9 @@ export class UpdateMealTypeComponent implements OnInit {
 
   updateMealType(): void {
     this.mealTypeService.updateMealType(this.mealTypeId, this.mealType).subscribe(
-      () => {
-        this.router.navigate(['/mealTypes']); 
+      (res:any) => {
+        console.log(res)
+        this.router.navigateByUrl(res.requestUrl); 
         alert('Meal Type Updated successfully')
       },
       (error) => {

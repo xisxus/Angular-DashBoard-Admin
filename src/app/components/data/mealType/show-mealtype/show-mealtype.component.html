@@ -2,7 +2,7 @@
 <div class="card mt-5 shadow-sm">
   <div class="card-header d-flex justify-content-between align-items-center bg-white text-black">
     <h2 class="mb-0">Meal Type List</h2>
-    <a class="btn btn-outline-primary shadow-sm" routerLink="/add-mealType">
+    <a class="btn btn-outline-primary shadow-sm" routerLink="/MealTypes/add">
       <i class="bi bi-plus-circle"></i> Add New Meal Type
     </a>
   </div>
@@ -17,13 +17,13 @@
           <th scope="col" class="text-center">Actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="text-center">
         <tr *ngFor="let mealType of mealTypes">
           <td>{{ mealType.mealTypeID }}</td>
           <td>{{ mealType.typeName }}</td>
           <td class="text-center">
             <a 
-              [routerLink]="['/update-mealType', mealType.mealTypeID]" 
+              [routerLink]="['/MealTypes/edit/', mealType.mealTypeID]" 
               class="btn btn-outline-primary btn-sm me-2">
               <i class="bi bi-pencil"></i> Edit
             </a>

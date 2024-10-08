@@ -23,7 +23,7 @@ export class AddMealTypeComponent {
     newMealType: MealType = { mealTypeID: 0, typeName: '' };
     selectedMealType?: MealType;
     successMessage: string | undefined;
-    constructor(private mealTypeService: MealTypeService) {}
+    constructor(private mealTypeService: MealTypeService, private router: Router) {}
 
   // Add a new meal type
   addMealType(): void {
@@ -45,15 +45,14 @@ export class AddMealTypeComponent {
     if (this.selectedMealType) {
       this.mealTypeService
         .updateMealType(this.selectedMealType.mealTypeID, this.selectedMealType)
-        .subscribe(() => {
-          this.getMealTypes();
+        .subscribe((res:any) => {
+          console.log(res)
+          
           this.selectedMealType = undefined;
           this.successMessage = 'Meal type Successfully updated!';
+          this.router.navigateByUrl(res.requestUrl); 
           alert('Meal Type Created successfully')
         });
     }
-  }
-  getMealTypes() {
-    throw new Error('Method not implemented.');
   }
 }

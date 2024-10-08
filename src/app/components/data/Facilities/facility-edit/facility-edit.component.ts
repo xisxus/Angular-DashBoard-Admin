@@ -37,8 +37,13 @@ export class FacilityEditComponent implements OnInit {
 
   updateFacility(): void {
     if (this.facility) {
-      this.facilityService.updateFacility(this.facilityID, this.facility).subscribe(() => {
-        this.router.navigate(['/facility']);
+      this.facilityService.updateFacility(this.facilityID, this.facility).subscribe((res:any) => {
+        console.log('====================================');
+        console.log(res);
+        console.log('====================================');
+        alert('facility updated successfully!');
+        this.router.navigateByUrl(res.requestUrl);
+        
       });
     }
   }

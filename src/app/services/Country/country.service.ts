@@ -8,32 +8,37 @@ import { Country } from '../../models/Country/country';
   providedIn: 'root'
 })
 export class CountryService {
-  private apiUrl = 'http://localhost:5141/api/Country';  // Replace with your API URL
+  private apiUrl = 'http://localhost:5141/api/Country';  // Base API URL
 
   constructor(private http: HttpClient) {}
 
   // GET all countries
   getCountries(): Observable<Country[]> {
-    return this.http.get<Country[]>(this.apiUrl);
+    const url = `${this.apiUrl}/get`;  // Updated URL for getting all countries
+    return this.http.get<Country[]>(url);
   }
 
   // GET country by ID
   getCountryById(id: number): Observable<Country> {
-    return this.http.get<Country>(`${this.apiUrl}/${id}`);
+    const url = `${this.apiUrl}/get/${id}`;  // Updated URL for getting a country by ID
+    return this.http.get<Country>(url);
   }
 
   // POST: add a new country
   addCountry(country: Country): Observable<Country> {
-    return this.http.post<Country>(this.apiUrl, country);
+    const url = `${this.apiUrl}/add`;  // Updated URL for adding a country
+    return this.http.post<Country>(url, country);
   }
 
   // PUT: update an existing country
   updateCountry(id: number, country: Country): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, country);
+    const url = `${this.apiUrl}/edit/${id}`;  // Updated URL for editing a country by ID
+    return this.http.put<void>(url, country);
   }
 
   // DELETE a country by ID
   deleteCountry(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    const url = `${this.apiUrl}/delete/${id}`;  // Updated URL for deleting a country by ID
+    return this.http.delete<void>(url);
   }
 }

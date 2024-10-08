@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [RouterLink, CommonModule, FormsModule],
   templateUrl: './state-edit.component.html',
-  styleUrl: './state-edit.component.css'
+  styleUrl: './state-edit.component.css',
 })
 export class StateEditComponent implements OnInit {
   state: State = {
@@ -33,8 +33,12 @@ export class StateEditComponent implements OnInit {
   }
 
   updateState(): void {
-    this.stateService.updateState(this.id, this.state).subscribe(() => {
-      this.router.navigate(['/states']);
+    this.stateService.updateState(this.id, this.state).subscribe((res: any) => {
+      console.log('====================================');
+      console.log(res);
+      console.log('====================================');
+      alert('state update successfully!');
+      this.router.navigateByUrl(res.requestUrl);
     });
   }
 }

@@ -40,9 +40,9 @@ export class AddFoodItemComponent implements OnInit {
     if (this.foodItemForm.valid) {
       const foodItemModel = this.foodItemForm.value;
       this.foodService.createFoodItem(foodItemModel).subscribe({
-        next: (response) => {
-          console.log('Food item created successfully', response);
-          this.router.navigate(['/foodItems']);
+        next: (response:any) => {
+          console.log(response);
+          this.router.navigateByUrl(response.requestUrl); 
         alert('Food item created successfully')
         },
         error: (error) => {

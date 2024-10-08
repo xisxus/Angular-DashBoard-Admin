@@ -1,0 +1,26 @@
+<p>package-create works!</p>
+
+<!-- package-create.component.html -->
+<form [formGroup]="packageForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="packageTitle">Package Title</label>
+        <input id="packageTitle" formControlName="packageTitle" required />
+    </div>
+    <div>
+        <label for="packageDescription">Package Description</label>
+        <textarea id="packageDescription" formControlName="packageDescription" required></textarea>
+    </div>
+    <div>
+        <label for="isAvailable">Is Available</label>
+        <input type="checkbox" id="isAvailable" formControlName="isAvailable" />
+    </div>
+    <div>
+        <label for="packageCategoryID">Package Category ID</label>
+        <input id="packageCategoryID" formControlName="packageCategoryID" required />
+    </div>
+    <div>
+        <label for="packageSubCategoryID">Package SubCategory ID (Optional)</label>
+        <input id="packageSubCategoryID" formControlName="packageSubCategoryID" />
+    </div>
+    <button type="submit" [disabled]="packageForm.invalid">Create Package</button>
+</form>

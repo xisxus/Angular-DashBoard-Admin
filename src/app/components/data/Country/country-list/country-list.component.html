@@ -14,7 +14,7 @@
           <td>{{ country.countryName }}</td>
           <td>
             <button (click)="deleteCountry(country.countryID)" class="btn btn-danger">Delete</button>
-            <button routerLink="/countries/edit/{{country.countryID}}" class="btn btn-secondary">Edit</button>
+            <button routerLink="/api/countries/edit/{{country.countryID}}" class="btn btn-secondary">Edit</button>
           </td>
         </tr>
       </tbody>

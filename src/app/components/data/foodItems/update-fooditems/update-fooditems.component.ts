@@ -42,8 +42,9 @@ export class UpdateFoodItemComponent implements OnInit {
   getFoodItem(id: number): void {
     this.isLoading = true;
     this.foodItemService.getFoodItem(id).subscribe({
-      next: (data: FoodItem) => {
-        this.foodItem = data;
+      next: (data: any) => {
+        console.log("res",data)
+        this.foodItem = data.data;
         this.isLoading = false;
       },
       error: (err) => {
@@ -55,11 +56,13 @@ export class UpdateFoodItemComponent implements OnInit {
 
   updateFoodItem(): void {
     this.isLoading = true;
-    this.foodItemService.updateFoodItem(this.foodItem.foodItemID, this.foodItem).subscribe({
-      next: () => {
+    this.foodItemService.updateFoodItem(this.foodItemId, this.foodItem).subscribe({
+      next: (res:any) => {
+        console.log(res)
         this.isLoading = false;
-        this.router.navigate(['/foodItems']); 
-        alert('Food item Updated successfully')
+        this.router.navigateByUrl(res.requestUrl); 
+        alert('Food item Updated successfully');
+
       },
       error: (err) => {
         console.error('Error updating food item', err);

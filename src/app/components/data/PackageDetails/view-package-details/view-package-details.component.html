@@ -1,0 +1,49 @@
+<div class="container">
+  <h2>Package Details</h2>
+  <div class="card-header">
+    <a class="btn btn-outline-primary btn-sm float-end" routerLink="/add-package-details">Add Details</a>
+  </div>
+
+  <!-- Check if there are any package details to display -->
+  <div *ngIf="packageDetails.length === 0">
+    No package details available
+  </div>
+  <div *ngIf="packageDetails.length > 0">
+    <table class="table table-bordered table-striped table-sm">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Package Duration</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Pickup Point</th>
+          <th>Maximum Person</th>
+          <th>Minimum Person</th>
+          <th>Created At</th>
+          <th>Updated At</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through packageDetails array to display data -->
+        <tr *ngFor="let package of packageDetails; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ package.packageDuration }} days</td>
+          <td>{{ package.startDate | date:'shortDate' }}</td>
+          <td>{{ package.endDate | date:'shortDate' }}</td>
+          <td>{{ package.pickupPoint }}</td>
+          <td>{{ package.maximumPerson }}</td>
+          <td>{{ package.minimumPerson }}</td>
+          <td>{{ package.createdAt | date:'shortDate' }}</td>
+          <td>{{ package.updatedAt | date:'shortDate' }}</td>
+          <td>
+            <!-- Add edit and delete buttons under actions -->
+            <button class="btn btn-danger btn-sm" (click)="deletePackageDetails(package.packageDetailsID)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

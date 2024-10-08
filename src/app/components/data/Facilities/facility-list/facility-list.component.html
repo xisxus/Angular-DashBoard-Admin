@@ -16,7 +16,7 @@
       <td>{{ facility.description }}</td>
       <td>{{ facility.isAvailable ? 'Yes' : 'No' }}</td>
       <td>
-        <a [routerLink]="['/facility/edit', facility.facilityID]">Edit</a>
+        <a [routerLink]="['/api/facility/edit', facility.facilityID]">Edit</a>
         <a [routerLink]="['/facility/delete', facility.facilityID]">Delete</a>
       </td>
     </tr>

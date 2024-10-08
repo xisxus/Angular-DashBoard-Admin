@@ -63,6 +63,8 @@ import { RequestUrlListComponent } from './components/data/UrlService/request-ur
 import { RequestUrlFormComponent } from './components/data/UrlService/request-url-form/request-url-form.component';
 import { EditRequestUrlComponent } from './components/data/UrlService/edit-request-url/edit-request-url.component';
 import { EditUrlServiceComponent } from './components/data/UrlService/edit-url-service/edit-url-service.component';
+import { AddPackageDetailsComponent } from './components/data/PackageDetails/add-package-details/add-package-details.component';
+import { PackageCreateComponent } from './components/data/Package/package-create/package-create.component';
 
 
 
@@ -77,13 +79,19 @@ export const routes: Routes = [
   { path: 'add-sub-category', component: AddSubCategoryComponent },
   { path: 'update-sub-category/:id', component: UpdateSubCategoryComponent},
 
+
+  {path: 'package/add', component : PackageCreateComponent},
+
+  {path: 'package/details/add/:id', component : AddPackageDetailsComponent},
+  {path: 'package/details/add', component : AddPackageDetailsComponent},
+
   { path: 'countries', component: CountryListComponent },   // GET
-  { path: 'countries/add', component: CountryAddComponent },   // POST
-  { path: 'countries/edit/:id', component: CountryEditComponent },   // PUT
+  { path: 'api/countries/add', component: CountryAddComponent },   // POST
+  { path: 'api/countries/edit/:id', component: CountryEditComponent },   // PUT
 
   { path: 'states', component: StateListComponent },
-  { path: 'states/create', component: StateCreateComponent },
-  { path: 'states/edit/:id', component: StateEditComponent },
+  { path: 'api/states/create', component: StateCreateComponent },
+  { path: 'api/states/edit/:id', component: StateEditComponent },
 
 
   { path: 'package/addBudget', component: CostEstimateFormComponentComponent},
@@ -98,8 +106,8 @@ export const routes: Routes = [
 
 
   { path: 'facility', component: FacilityListComponent },
-  { path: 'facility/create', component: FacilityCreateComponent },
-  { path: 'facility/edit/:id', component: FacilityEditComponent },
+  { path: 'api/facility/add', component: FacilityCreateComponent },
+  { path: 'api/facility/edit/:id', component: FacilityEditComponent },
 
 
 
@@ -123,13 +131,16 @@ export const routes: Routes = [
 
 
   
- {path:'mealTypes',component:ShowMealtypeComponent},
- {path:'add-mealType',component:AddMealTypeComponent},
- { path: 'update-mealType/:id', component: UpdateMealTypeComponent },
- {path:'foodItems', component:ShowFoodItemsComponent},
- {path:'add-foodItems',component:AddFoodItemComponent},
- { path: 'food-items', component: AddFoodItemComponent },
- { path: 'update-fooditems/:id', component: UpdateFoodItemComponent },
+  {path:'mealTypes',component:ShowMealtypeComponent},
+  {path:'MealTypes/add',component:AddMealTypeComponent},
+  { path: 'MealTypes/edit/:id', component: UpdateMealTypeComponent },
+ 
+ 
+  {path:'foodItems', component:ShowFoodItemsComponent},
+  { path: 'food-items', component: AddFoodItemComponent },
+  { path: 'FoodItems/edit/:id', component: UpdateFoodItemComponent },
+  {path:'FoodItems/add',component:AddFoodItemComponent},
+ 
 
  {path:'packageFoodItemsList',component: ShowPackagefooditemsComponent},
  {path:'add-PackagefoodItems/:id',component:AddPackagefooditemsComponent},
@@ -140,13 +151,14 @@ export const routes: Routes = [
  { path: 'package/transportation/add/:id', component: AddPackageTransportationComponent },
 
 
- { path: 'add-location', component: AddLocationComponent },
-  { path: 'location', component: LocationListComponent },
-  { path: 'edit-location/:id', component: EditLocationComponent },
-  { path: '', redirectTo: '/locations', pathMatch: 'full' },
-  {path:'locationGalleryList',component:LocationGallerylistComponent},
-  {path:'add-locationGallery',component:AddLocationGalleryComponent},
-  {path:'update-LocationGallery/:id',component:UpdateLocationgalleryComponent},
+ { path: 'location/add', component: AddLocationComponent },
+ { path: 'location', component: LocationListComponent },
+ { path: 'location/edit/:id', component: EditLocationComponent },
+ { path: '', redirectTo: '/locations', pathMatch: 'full' },
+ { path: 'locationGallery', component: LocationGallerylistComponent },
+ { path: 'locationGallery/add', component: AddLocationGalleryComponent },
+ { path: 'locationGallery/edit/:id', component: UpdateLocationgalleryComponent },
+
 
 
   {path:'url/list',component:UrlServiceListComponent},

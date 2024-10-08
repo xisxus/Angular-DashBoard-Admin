@@ -8,27 +8,28 @@ import { LocationInsertModel } from '../../models/Location model/location-insert
   providedIn: 'root'
 })
 export class LocationService {
- 
-  private apiUrl = 'http://localhost:5141/api/Location'; // Replace with your actual API URL
+
+  private apiUrl = 'http://localhost:5141/api/Location'; // Base API URL
 
   constructor(private http: HttpClient) { }
 
   addLocation(location: LocationInsertModel): Observable<any> {
-    return this.http.post<any>(this.apiUrl, location);
+    return this.http.post<any>(`${this.apiUrl}/add`, location);
   }
 
   updateLocation(id: number, location: LocationInsertModel): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, location);
+    return this.http.put<void>(`${this.apiUrl}/edit/${id}`, location);
   }
 
   deleteLocation(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
+
   getLocations(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
 
-  getLocationById(id: number) {
-    return this.http.get(`http://localhost:5141/api/Location/${id}`);
+  getLocationById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 }

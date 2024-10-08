@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationInsertModel } from '../../../../../models/Location model/location-insert-model';
+
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LocationService } from '../../../../../services/Location/location.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { LocationInsertModel } from '../../../../../models/Location model/location-insert-model';
 
 @Component({
   selector: 'app-edit-location',

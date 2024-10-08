@@ -34,11 +34,11 @@ export class LocationListComponent implements OnInit {
   }
 
   navigateToEditLocation(id: number): void {
-    this.router.navigate(['/edit-location', id]); // Redirect to the edit location page
+    this.router.navigate(['/location/edit/', id]); // Redirect to the edit location page
   }
 
   navigateToAddLocation(): void {
-    this.router.navigate(['/add-location']); // Redirect to the add location page
+    this.router.navigate(['/location/add']); // Redirect to the add location page
   }
 
   deleteLocation(id: number): void {

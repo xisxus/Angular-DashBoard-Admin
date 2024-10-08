@@ -6,7 +6,6 @@ import { FoodItemsService } from '../../../../services/Food/food-items.service';
 
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { FoodItemOutputModel } from '../../../../models/Food/FoodItemOutputModel ';
 
 @Component({
   selector: 'app-show-food-items',
