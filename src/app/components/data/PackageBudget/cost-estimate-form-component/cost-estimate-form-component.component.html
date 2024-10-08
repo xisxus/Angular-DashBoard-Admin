@@ -1,30 +1,27 @@
-<p>cost-estimate-form-component works!</p>
-
-
-<form (ngSubmit)="submitCostEstimate()">
-    <label>
-        Package ID:
-        <input [(ngModel)]="costEstimate.packageID" name="packageID" required />
-    </label>
-    <label>
-        Estimated Food Cost:
-        <input [(ngModel)]="costEstimate.estimatedFoodCost" name="estimatedFoodCost" required />
-    </label>
-    <label>
-        Estimated Transport Cost:
-        <input [(ngModel)]="costEstimate.estimatedTransportCost" name="estimatedTransportCost" required />
-    </label>
-    <label>
-        Estimated Accommodation Cost:
-        <input [(ngModel)]="costEstimate.estimatedAccommodationCost" name="estimatedAccommodationCost" required />
-    </label>
-    <label>
-        Other Cost:
-        <input [(ngModel)]="costEstimate.otherCost" name="otherCost" required />
-    </label>
-    <label>
-        Profit Percent:
-        <input [(ngModel)]="costEstimate.profitPercent" name="profitPercent" required />
-    </label>
-    <button type="submit">Create Cost Estimate</button>
+<form (ngSubmit)="submitCostEstimate()" class="p-3">
+    <div class="mb-3">
+        <label for="packageID" class="form-label">Package ID:</label>
+        <input [(ngModel)]="costEstimate.packageID" name="packageID" id="packageID" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="estimatedFoodCost" class="form-label">Estimated Food Cost:</label>
+        <input [(ngModel)]="costEstimate.estimatedFoodCost" name="estimatedFoodCost" id="estimatedFoodCost" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="estimatedTransportCost" class="form-label">Estimated Transport Cost:</label>
+        <input [(ngModel)]="costEstimate.estimatedTransportCost" name="estimatedTransportCost" id="estimatedTransportCost" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="estimatedAccommodationCost" class="form-label">Estimated Accommodation Cost:</label>
+        <input [(ngModel)]="costEstimate.estimatedAccommodationCost" name="estimatedAccommodationCost" id="estimatedAccommodationCost" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="otherCost" class="form-label">Other Cost:</label>
+        <input [(ngModel)]="costEstimate.otherCost" name="otherCost" id="otherCost" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label for="profitPercent" class="form-label">Profit Percent:</label>
+        <input [(ngModel)]="costEstimate.profitPercent" name="profitPercent" id="profitPercent" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Create Cost Estimate</button>
 </form>

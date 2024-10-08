@@ -1,13 +1,17 @@
 <p>request-url-list works!</p>
 <!-- src/app/components/requesturl-list/requesturl-list.component.html -->
-<div>
+<div class="container mt-4">
   <h2>Request URLs</h2>
-  <button routerLink="/requesturl/add">Add New Request URL</button>
-  <ul>
-    <li *ngFor="let requestUrl of requestUrls">
-      <strong>{{ requestUrl.urlName }}</strong> ({{ requestUrl.url }})
-      <button routerLink="/requesturl/edit/{{ requestUrl.requestUrlId }}">Edit</button>
-      <button (click)="deleteRequestUrl(requestUrl.requestUrlId)">Delete</button>
+  <button class="btn btn-primary mb-3" routerLink="/requesturl/add">Add New Request URL</button>
+  <ul class="list-group">
+    <li *ngFor="let requestUrl of requestUrls" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ requestUrl.urlName }}</strong> ({{ requestUrl.url }})
+      </div>
+      <div>
+        <button class="btn btn-warning btn-sm" routerLink="/requesturl/edit/{{ requestUrl.requestUrlId }}">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteRequestUrl(requestUrl.requestUrlId)">Delete</button>
+      </div>
     </li>
   </ul>
 </div>

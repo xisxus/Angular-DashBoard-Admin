@@ -1,11 +1,15 @@
 <!-- src/app/components/url-service-list/url-service-list.component.html -->
-<div>
+<div class="container mt-4">
   <h2>Url Services</h2>
-  <ul>
-    <li *ngFor="let urlService of urlServices">
-      <strong>{{ urlService.description }}</strong> ({{ urlService.currentUrl }})
-      <button routerLink="/urlservices/edit/{{ urlService.urlServiceId }}">Edit</button>
-      <button (click)="deleteUrlService(urlService.urlServiceId)">Delete</button>
+  <ul class="list-group">
+    <li *ngFor="let urlService of urlServices" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <strong>{{ urlService.description }}</strong> ({{ urlService.currentUrl }})
+      </div>
+      <div>
+        <button class="btn btn-warning btn-sm" routerLink="/urlservices/edit/{{ urlService.urlServiceId }}">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteUrlService(urlService.urlServiceId)">Delete</button>
+      </div>
     </li>
   </ul>
 </div>
