@@ -1,0 +1,24 @@
+<p>edit-url-service works!</p>
+<!-- src/app/components/edit-urlservice/edit-urlservice.component.html -->
+<div>
+  <h2>{{ isEditMode ? 'Edit' : 'Create' }} UrlService</h2>
+  <form (ngSubmit)="submit()">
+    <div>
+      <label for="currentUrl">Current URL</label>
+      <input id="currentUrl" [(ngModel)]="urlServiceDto.currentUrl" name="currentUrl" required />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="urlServiceDto.description" name="description" required></textarea>
+    </div>
+    <div>
+      <label for="requestUrlId">Request URL</label>
+      <select id="requestUrlId" [(ngModel)]="urlServiceDto.requestUrlId" name="requestUrlId" required>
+        <option *ngFor="let requestUrl of requestUrls" [value]="requestUrl.requestUrlId">
+          {{ requestUrl.urlName }} ({{ requestUrl.url }})
+        </option>
+      </select>
+    </div>
+    <button type="submit">{{ isEditMode ? 'Update' : 'Create' }}</button>
+  </form>
+</div>

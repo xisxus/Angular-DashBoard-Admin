@@ -1,0 +1,24 @@
+<p>url-service-form works!</p>
+<!-- src/app/components/url-service-form/url-service-form.component.html -->
+<div>
+  <h2>Create Url Service</h2>
+  <form (ngSubmit)="submit()">
+    <div>
+      <label for="currentUrl">Current Url</label>
+      <input id="currentUrl" [(ngModel)]="createUrlServiceDto.currentUrl" name="currentUrl" />
+    </div>
+    <div>
+      <label for="description">Description</label>
+      <input id="description" [(ngModel)]="createUrlServiceDto.description" name="description" />
+    </div>
+    <div>
+      <label for="requestUrlId">Request Url</label>
+      <select id="requestUrlId" [(ngModel)]="createUrlServiceDto.requestUrlId" name="requestUrlId">
+        <option *ngFor="let requestUrl of requestUrls" [value]="requestUrl.requestUrlId">
+          {{ requestUrl.urlName }}
+        </option>
+      </select>
+    </div>
+    <button type="submit">Create</button>
+  </form>
+</div>

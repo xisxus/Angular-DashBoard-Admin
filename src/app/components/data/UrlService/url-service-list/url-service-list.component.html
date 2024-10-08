@@ -1,0 +1,11 @@
+<!-- src/app/components/url-service-list/url-service-list.component.html -->
+<div>
+  <h2>Url Services</h2>
+  <ul>
+    <li *ngFor="let urlService of urlServices">
+      <strong>{{ urlService.description }}</strong> ({{ urlService.currentUrl }})
+      <button routerLink="/urlservices/edit/{{ urlService.urlServiceId }}">Edit</button>
+      <button (click)="deleteUrlService(urlService.urlServiceId)">Delete</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,16 @@
+<p>edit-request-url works!</p>
+<!-- src/app/components/edit-requesturl/edit-requesturl.component.html -->
+<div>
+  <h2>Edit Request URL</h2>
+  <form (ngSubmit)="submit()">
+    <div>
+      <label for="url">URL</label>
+      <input id="url" [(ngModel)]="requestUrlDto.url" name="url" required />
+    </div>
+    <div>
+      <label for="urlName">URL Name</label>
+      <input id="urlName" [(ngModel)]="requestUrlDto.urlName" name="urlName" required />
+    </div>
+    <button type="submit">Update</button>
+  </form>
+</div>

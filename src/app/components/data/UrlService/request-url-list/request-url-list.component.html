@@ -1,0 +1,13 @@
+<p>request-url-list works!</p>
+<!-- src/app/components/requesturl-list/requesturl-list.component.html -->
+<div>
+  <h2>Request URLs</h2>
+  <button routerLink="/requesturl/add">Add New Request URL</button>
+  <ul>
+    <li *ngFor="let requestUrl of requestUrls">
+      <strong>{{ requestUrl.urlName }}</strong> ({{ requestUrl.url }})
+      <button routerLink="/requesturl/edit/{{ requestUrl.requestUrlId }}">Edit</button>
+      <button (click)="deleteRequestUrl(requestUrl.requestUrlId)">Delete</button>
+    </li>
+  </ul>
+</div>
