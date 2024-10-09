@@ -1,63 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateRequestUrlDto, CreateUrlServiceDto, RequestUrlDto, UrlServiceDto } from '../../models/UrlService/url-service-dto';
+import { CreateRequestUrlDto, CreateUrlServiceDto, CurrentUrl, RequestUrl, RequestUrlDto, UrlServiceDto, UrlServiceModel } from '../../models/UrlService/url-service-dto';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UrlServiceService {
-  private apiUrl = 'http://localhost:5141/api/UrlService';  // Replace with your API base URL
+  private baseUrl = 'http://localhost:5141/api/UrlService';  // Replace with your API base URL
+
+
 
   constructor(private http: HttpClient) {}
 
-  // Get all UrlServices
-  getUrlServices(): Observable<UrlServiceDto[]> {
-    return this.http.get<UrlServiceDto[]>(`${this.apiUrl}/urlservices`);
-  }
-
-  // Get UrlService by ID
-  getUrlService(id: number): Observable<UrlServiceDto> {
-    return this.http.get<UrlServiceDto>(`${this.apiUrl}/urlservices/${id}`);
-  }
-
-  // Create a new UrlService
-  createUrlService(createUrlServiceDto: CreateUrlServiceDto): Observable<any> {
-    return this.http.post(`${this.apiUrl}/urlservices`, createUrlServiceDto);
-  }
-
-  // Update an existing UrlService
-  updateUrlService(id: number, updateUrlServiceDto: CreateUrlServiceDto): Observable<any> {
-    return this.http.put(`${this.apiUrl}/urlservices/${id}`, updateUrlServiceDto);
-  }
-
-  // Delete a UrlService
-  deleteUrlService(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/urlservices/${id}`);
-  }
-
   // Get all RequestUrls
-  getRequestUrls(): Observable<RequestUrlDto[]> {
-    return this.http.get<RequestUrlDto[]>(`${this.apiUrl}/requesturls`);
+  getAllRequestUrls(): Observable<RequestUrl[]> {
+      return this.http.get<RequestUrl[]>(`${this.baseUrl}/requesturls`);
   }
 
-  // Get RequestUrl by ID
-  getRequestUrl(id: number): Observable<RequestUrlDto> {
-    return this.http.get<RequestUrlDto>(`${this.apiUrl}/requesturls/${id}`);
+  // Get all CurrentUrls
+  getAllCurrentUrls(): Observable<CurrentUrl[]> {
+      return this.http.get<CurrentUrl[]>(`${this.baseUrl}/currenturls`);
   }
 
-  // Create a new RequestUrl
-  createRequestUrl(createRequestUrlDto: CreateRequestUrlDto): Observable<any> {
-    return this.http.post(`${this.apiUrl}/requesturls`, createRequestUrlDto);
-  }
+  // Add these methods to the UrlService
 
-  // Update an existing RequestUrl
-  updateRequestUrl(id: number, updateRequestUrlDto: CreateRequestUrlDto): Observable<any> {
-    return this.http.put(`${this.apiUrl}/requesturls/${id}`, updateRequestUrlDto);
-  }
+createRequestUrl(requestUrl: RequestUrl): Observable<RequestUrl> {
+  return this.http.post<RequestUrl>(`${this.baseUrl}/requesturls`, requestUrl);
+}
 
-  // Delete a RequestUrl
-  deleteRequestUrl(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/requesturls/${id}`);
-  }
+createCurrentUrl(currentUrl: CurrentUrl): Observable<CurrentUrl> {
+  return this.http.post<CurrentUrl>(`${this.baseUrl}/currenturls`, currentUrl);
+}
+
+
+
+createUrlService(urlService: UrlServiceModel): Observable<UrlServiceModel> {
+  return this.http.post<UrlServiceModel>(`${this.baseUrl}`, urlService);
+}
+
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UrlServiceFormComponent } from './url-service-form.component';
+import { CreateUrlComponent } from './create-url.component';
 
-describe('UrlServiceFormComponent', () => {
-  let component: UrlServiceFormComponent;
-  let fixture: ComponentFixture<UrlServiceFormComponent>;
+describe('CreateUrlComponent', () => {
+  let component: CreateUrlComponent;
+  let fixture: ComponentFixture<CreateUrlComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UrlServiceFormComponent]
+      imports: [CreateUrlComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UrlServiceFormComponent);
+    fixture = TestBed.createComponent(CreateUrlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

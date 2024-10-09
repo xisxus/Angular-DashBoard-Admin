@@ -57,12 +57,7 @@ import { EditLocationComponent } from './components/data/Location/location/edit-
 import { LocationGallerylistComponent } from './components/data/Location/location-gallery/location-gallerylist/location-gallerylist.component';
 import { AddLocationGalleryComponent } from './components/data/Location/location-gallery/add-location-gallery/add-location-gallery.component';
 import { UpdateLocationgalleryComponent } from './components/data/Location/location-gallery/update-locationgallery/update-locationgallery.component';
-import { UrlServiceListComponent } from './components/data/UrlService/url-service-list/url-service-list.component';
-import { UrlServiceFormComponent } from './components/data/UrlService/url-service-form/url-service-form.component';
-import { RequestUrlListComponent } from './components/data/UrlService/request-url-list/request-url-list.component';
-import { RequestUrlFormComponent } from './components/data/UrlService/request-url-form/request-url-form.component';
-import { EditRequestUrlComponent } from './components/data/UrlService/edit-request-url/edit-request-url.component';
-import { EditUrlServiceComponent } from './components/data/UrlService/edit-url-service/edit-url-service.component';
+
 import { AddPackageDetailsComponent } from './components/data/PackageDetails/add-package-details/add-package-details.component';
 import { PackageCreateComponent } from './components/data/Package/package-create/package-create.component';
 import { ViewTransportationComponent } from './components/data/Transport/transportation/view-transportation/view-transportation.component';
@@ -71,6 +66,8 @@ import { EditTransportationComponent } from './components/data/Transport/transpo
 import { ViewTransportationCatagory } from './components/data/Transport/transportationCatagory/view-transportation-catagory/view-transportation-catagory.component';
 import { AddTransportationCatagoryComponent } from './components/data/Transport/transportationCatagory/add-transportation-catagory/add-transportation-catagory.component';
 import { EditTransportationCatagoryComponent } from './components/data/Transport/transportationCatagory/edit-transportation-catagory/edit-transportation-catagory.component';
+import { CreateUrlComponent } from './components/data/UrlService/create-url/create-url.component';
+import { UrlListComponent } from './components/data/UrlService/url-list/url-list.component';
 
 
 
@@ -177,13 +174,9 @@ export const routes: Routes = [
 
 
 
-
-  {path:'url/list',component:UrlServiceListComponent},
-  {path:'url/add',component:UrlServiceFormComponent},
-  {path:'requesturl/list',component:RequestUrlListComponent},
-  {path:'requesturl/add',component:RequestUrlFormComponent},
-  {path:'requesturl/edit/:id',component:EditRequestUrlComponent},
-  {path:'urlservices/edit/:id',component:EditUrlServiceComponent},
+{path : 'url/add' , component: CreateUrlComponent},
+{path : 'url/list' , component: UrlListComponent},
+  
 
 
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
@@ -192,6 +185,7 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  
+exports: [RouterModule]
 })
 export class AppRoutingModule { }

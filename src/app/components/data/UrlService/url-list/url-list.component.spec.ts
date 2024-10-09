@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditRequestUrlComponent } from './edit-request-url.component';
+import { UrlListComponent } from './url-list.component';
 
-describe('EditRequestUrlComponent', () => {
-  let component: EditRequestUrlComponent;
-  let fixture: ComponentFixture<EditRequestUrlComponent>;
+describe('UrlListComponent', () => {
+  let component: UrlListComponent;
+  let fixture: ComponentFixture<UrlListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EditRequestUrlComponent]
+      imports: [UrlListComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EditRequestUrlComponent);
+    fixture = TestBed.createComponent(UrlListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
