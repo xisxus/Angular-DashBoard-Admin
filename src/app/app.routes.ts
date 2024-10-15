@@ -145,9 +145,9 @@ export const routes: Routes = [
   {path:'FoodItems/add',component:AddFoodItemComponent},
  
 
- {path:'packageFoodItemsList',component: ShowPackagefooditemsComponent},
- {path:'add-PackagefoodItems/:id',component:AddPackagefooditemsComponent},
- {path:'add-PackagefoodItems',component:AddPackagefooditemsComponent},
+  {path:'packagefooditem/get',component: ShowPackagefooditemsComponent},
+  {path:'packagefood/add/:id',component:AddPackagefooditemsComponent},
+  {path:'packagefood/add',component:AddPackagefooditemsComponent},
  
  { path: 'package/transportation', component: ViewPackageTransportationComponent },
  { path: 'package/transportation/add', component: AddPackageTransportationComponent },

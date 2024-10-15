@@ -7,7 +7,7 @@ import { MealTypeService } from '../../../../services/Food/meal-type.service';
 import { MealType } from '../../../../models/Food/meal-type';
 import { FoodItem } from '../../../../models/Food/FoodItem';
 import { FoodItemsService } from '../../../../services/Food/food-items.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-packagefooditems',
@@ -16,12 +16,12 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './add-packagefooditems.component.html',
   styleUrl: './add-packagefooditems.component.css'
 })
-export class AddPackagefooditemsComponent  implements OnInit {
-  packageFoodItems: PackageFoodItem[] = [];
-  mealTypes: MealType[] = [];
-  foodItems: FoodItem[] = [];
-  allFood: any[] = [];
-  newFoodItem: PackageFoodItem = {
+export class AddPackagefooditemsComponent implements OnInit {
+  mealTypes: any[] = []; 
+  foodItems: any[] = []; 
+  packageFoodItems: any[] = [];
+
+  newFoodItem: any = { 
     mealTypeID: 0,
     foodItemID: 0,
     packageID: 0,
@@ -31,22 +31,29 @@ export class AddPackagefooditemsComponent  implements OnInit {
     scheduleTime: new Date()
   };
 
-  
-  packageID: number = 0;
+  packageID: number = 0; 
+  ide: any;
 
-  constructor(private packageFoodItemService: PackageFoodItemsService,
+  constructor(
     private mealTypeService: MealTypeService,
     private foodItemsService: FoodItemsService,
-    private route : ActivatedRoute) {}
-
-   
+    private packageFoodItemService: PackageFoodItemsService,
+    private route: ActivatedRoute, 
+    private navig: Router
+  ) {}
 
   ngOnInit(): void {
-    // You should bind the method correctly with parentheses
-    this.packageID = Number(this.route.snapshot.paramMap.get('id'));
-    this.getPackageFoodItems(String(this.packageID));
-    this.getMealTypes();
-    this.getAllFoodItems();
+    this.getMealTypes(); 
+    this.getAllFoodItems(); 
+    this.ide = this.route.snapshot.paramMap.get('id');
+    this.LoadFoodItems();
+  }  
+
+  LoadFoodItems(): void {
+    this.packageFoodItemService.getPackageFoodItems(this.ide).subscribe((res: any) => {
+      console.log('response', res);
+      this.packageFoodItems = res.foodItems.$values;
+    });
   }
 
   addPackageFoodItem(): void {
@@ -55,16 +62,15 @@ export class AddPackagefooditemsComponent  implements OnInit {
       return;
     }
 
-    this.packageFoodItemService.addPackageFoodItem(this.newFoodItem, this.packageID).subscribe(
-      response => {
+    this.newFoodItem.packageID = this.ide;
+    this.packageFoodItemService.addPackageFoodItem(this.newFoodItem, this.ide).subscribe(
+      (response: any) => {
         console.log(response);
 
         if (response.success) {
           alert('Package food item added successfully');
-          // Re-fetch the updated list of food items after adding
-          this.getPackageFoodItems(String(this.newFoodItem.packageID));
-          this.resetForm(); // Optional: reset the form after adding
-         
+          this.LoadFoodItems();
+          this.resetForm();
         } else {
           alert('Error: ' + response.message);
         }
@@ -75,27 +81,11 @@ export class AddPackagefooditemsComponent  implements OnInit {
     );
   }
 
-  getPackageFoodItems(packageID: string): void {
-    const packageId = parseInt(packageID); // Convert the string to a number
-    if (!isNaN(packageId)) {
-      this.packageFoodItemService.getPackageFoodItems(packageId).subscribe(
-        response => {
-          console.log('res1', response);
-
-          if (response.success) {
-            this.packageFoodItems = response.foodItems.$values;
-          }
-        },
-        error => {
-          console.error('Error fetching package food items:', error);
-        }
-      );
-    } else {
-      console.error('Invalid Package ID');
-    }
+  SaveExit(): void {
+    this.addPackageFoodItem();
+    this.navig.navigateByUrl('/dashboard');
   }
 
-  // Optionally reset the form fields after adding a food item
   resetForm(): void {
     this.newFoodItem = {
       mealTypeID: 0,
@@ -108,16 +98,13 @@ export class AddPackagefooditemsComponent  implements OnInit {
     };
   }
 
-
   getMealTypes(): void {
     this.mealTypeService.getMealTypes().subscribe((response: any) => {
-      
-      
-      this.mealTypes = response.$values;  // Map to the $values array
+      this.mealTypes = response.$values; // Map to the $values array
       console.log('res', this.mealTypes);
-      
     });
   }
+
   getAllFoodItems(): void {
     this.foodItemsService.getAllFoodItems().subscribe((response: any) => {
       console.log(response); // Log the response to check the structure
@@ -125,6 +112,16 @@ export class AddPackagefooditemsComponent  implements OnInit {
     });
   }
 
+  getMealTypeName(mealTypeID: number): string {
+    const mealType = this.mealTypes.find(mt => mt.mealTypeID === mealTypeID);
+    return mealType ? mealType.typeName : 'Unknown';
+  }
+
+  // Method to get food item name by ID
+  getFoodItemName(foodItemID: number): string {
+    const foodItem = this.foodItems.find(fi => fi.foodItemID === foodItemID);
+    return foodItem ? foodItem.itemName : 'Unknown';
+  }
 }
 
 

@@ -11,12 +11,11 @@ export class PackageFoodItemsService {
 
   constructor(private http: HttpClient) {}
 
-  addPackageFoodItem(foodItem: PackageFoodItem, packageID : number): Observable<any> {
-    return this.http.post(`${this.apiUrl}/add-package-food-item/${packageID}`, foodItem);
+  addPackageFoodItem(foodItem: PackageFoodItem, packageID: number): Observable<any> {
+    return this.http.post(`${this.apiUrl}/packagefood/add/${packageID}`, foodItem);
   }
 
-  // http://localhost:5141/api/Package/add-package-food-item
   getPackageFoodItems(packageId: number): Observable<any> {
-    return this.http.get(`${this.apiUrl}/get-package-food-items/${packageId}`);
+    return this.http.get(`${this.apiUrl}/packagefooditem/get/${packageId}`);
   }
 }
