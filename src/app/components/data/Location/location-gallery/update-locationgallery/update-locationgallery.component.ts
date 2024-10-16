@@ -57,7 +57,7 @@ export class UpdateLocationgalleryComponent implements OnInit {
 
   onSubmit(): void {
     if (this.galleryForm.invalid) return;
-
+  
     const formValue = this.galleryForm.value;
     const model: LocationGalleryInsertModel = {
       isPrimary: formValue.isPrimary,
@@ -65,10 +65,16 @@ export class UpdateLocationgalleryComponent implements OnInit {
       locationID: formValue.locationID,
       imageFile: this.selectedImageFile
     };
-
+  
     this.locationService.updateGallery(this.galleryId, model).subscribe({
-      next: () => this.router.navigate(['/locationGalleryList']),
+      next: (response: any) => {
+        alert('LocationGallery Updated Successfully');
+        // Navigate using the requestUrl from the response
+        const requestUrl = response.requestUrl;
+        this.router.navigateByUrl(requestUrl);
+      },
       error: (err: any) => console.error('Error updating gallery', err)
     });
   }
+  
 }

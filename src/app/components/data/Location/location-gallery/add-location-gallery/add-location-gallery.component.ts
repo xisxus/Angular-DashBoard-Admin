@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule, FormsModule } 
 
 import { LocationGalleryService } from '../../../../../services/Location/location-gallery.service';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LocationService } from '../../../../../services/Location/location.service';
 import { LocationGalleryInsertModel } from '../../../../../models/Location model/LocationGalleryInsertModel';
 
@@ -26,7 +26,8 @@ export class AddLocationGalleryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private locationGalleryService: LocationGalleryService,
-    private locationService: LocationService // Inject LocationService
+    private locationService: LocationService,
+    private navi:Router // Inject LocationService
   ) {
     this.galleryForm = this.fb.group({
       isPrimary: [false, Validators.required],
@@ -63,15 +64,18 @@ export class AddLocationGalleryComponent implements OnInit {
 
     if (this.isEditMode && this.editGalleryId) {
       // Update existing gallery
-      this.locationGalleryService.updateGallery(this.editGalleryId, galleryModel).subscribe(() => {
+      this.locationGalleryService.updateGallery(this.editGalleryId, galleryModel).subscribe((res:any) => {
         alert('Gallery updated successfully');
+        console.log(res);
+        this.navi.navigateByUrl(res.requestUrl)
         this.resetForm();
       });
     } else {
       // Add new gallery
-      this.locationGalleryService.addGallery(galleryModel).subscribe(() => {
+      this.locationGalleryService.addGallery(galleryModel).subscribe((res:any) => {
         alert('Gallery added successfully');
         this.resetForm();
+        this.navi.navigateByUrl(res.requestUrl)
       });
     }
   }

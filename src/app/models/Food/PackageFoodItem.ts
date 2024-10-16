@@ -8,4 +8,6 @@ export interface PackageFoodItem {
   foodUnitPrice: number;
   itemTotalCost?: number;
   scheduleTime: Date;
+   typeName:string,
+   itemName:string
 }

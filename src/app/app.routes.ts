@@ -89,12 +89,12 @@ export const routes: Routes = [
   {path: 'package/details/add', component : AddPackageDetailsComponent},
 
   { path: 'countries', component: CountryListComponent },   // GET
-  { path: 'api/countries/add', component: CountryAddComponent },   // POST
-  { path: 'api/countries/edit/:id', component: CountryEditComponent },   // PUT
+  { path: 'countries/add', component: CountryAddComponent },   // POST
+  { path: 'countries/edit/:id', component: CountryEditComponent },   // PUT
 
   { path: 'states', component: StateListComponent },
-  { path: 'api/states/create', component: StateCreateComponent },
-  { path: 'api/states/edit/:id', component: StateEditComponent },
+  { path: 'states/add', component: StateCreateComponent },
+  { path: 'states/edit/:id', component: StateEditComponent },
 
 
   { path: 'package/addBudget', component: CostEstimateFormComponentComponent},
@@ -158,9 +158,10 @@ export const routes: Routes = [
  { path: 'location', component: LocationListComponent },
  { path: 'location/edit/:id', component: EditLocationComponent },
  { path: '', redirectTo: '/locations', pathMatch: 'full' },
- { path: 'locationGallery', component: LocationGallerylistComponent },
- { path: 'locationGallery/add', component: AddLocationGalleryComponent },
- { path: 'locationGallery/edit/:id', component: UpdateLocationgalleryComponent },
+ { path: 'LocationGallery', component: LocationGallerylistComponent },
+ { path: 'LocationGallery/add', component: AddLocationGalleryComponent },
+ { path: 'LocationGallery/edit/:id', component: UpdateLocationgalleryComponent },
+
 
 
  { path: 'api/Transportation/getAll', component: ViewTransportationComponent },

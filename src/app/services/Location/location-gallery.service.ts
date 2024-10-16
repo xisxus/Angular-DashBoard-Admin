@@ -12,11 +12,13 @@ import { LocationGalleryInsertModel } from '../../models/Location model/Location
 export class LocationGalleryService {
   private apiUrl = 'http://localhost:5141/api/LocationGallery'; // Base API URL
 
+  // http://localhost:5141/api/LocationGallery/locationGallery/1
+
   constructor(private http: HttpClient) {}
 
   // Get galleries by location ID
   getGalleriesByLocationId(locationId: number): Observable<LocationGalleryResponse> {
-    return this.http.get<LocationGalleryResponse>(`${this.apiUrl}/location/${locationId}`);
+    return this.http.get<LocationGalleryResponse>(`${this.apiUrl}/locationGallery/${locationId}`);
   }
 
   // Add new gallery
